@@ -1,0 +1,177 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>Stayways | Finding a long termrental accommodation made easy</title>
+    <meta charset="UTF-8">
+    <link href="css/font.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href=" css/partical-animation.css">
+    <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+
+
+</head>
+
+<body>
+    <!-- main background -->
+    <div class="ui grid">
+        <div class="sixteen wide column masthead">
+            <div id="particles-js"></div>
+            <div class="layer">
+                <div class="ui grid container ">
+                    <div class="four wide column ">
+                        <div class="logo"><img src="./logo.png" alt="Stayways" height="40px"></div>
+                    </div>
+                    <div class="twelve wide column nav">
+                        <div class="nav-buttons"><button id="sign" class=" ui  green button ">Sign Up</button></div>
+                        <div class="nav-buttons"><button id="log" class="ui inverted button">Log In</button></div>
+                        <div class="nav-buttons"><button class="ui inverted basic button">Host accommodation</button></div>
+                    </div>
+                </div>
+                <div class="textarea">
+                    <div class="ui grid center aligned ">
+                        <p class="heading">Stayways</p>
+                    </div>
+                    <div class="ui grid subtitle center aligned">
+                        <span class="subtitle">Discover Long Term Accommodations</span>
+                    </div>
+                </div>
+                <div class="ui grid searcharea center aligned ">
+                    <div class="searchbar">
+                        <div class="ui huge form">
+                            <div class="two fields">
+                                <div class="fourteen wide field">
+                                    <input type="text" placeholder="Where do you want to live ?">
+                                </div>
+                                <div class="two wide field">
+                                    <button class="huge ui blue button">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <a id="tohash" href="#firstNote" class="ui icon bounce"><i class="big angle down icon "></i></a>
+
+    </div>
+
+
+    <!--after header -->
+    <div class="ui grid">
+        <div class="row"></div>
+        <div class="row">
+            <div class="one wide column"></div>
+            <div class="nine wide column">
+              <h1>We find rooms & villas that people love!</h1>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="right aligned five wide column">
+                <div class="ui vertical animated green button" tabindex="0">
+                    <div class="visible content">Become a Host</div>
+                    <div class="hidden content">Become a Host</div>
+                </div>          
+            </div>
+            <div class="one wide column"></div>
+        </div>
+        <div class="row">
+            <div class="one wide column"></div>
+            <div class="nine wide column">
+            <span class="sliderHeader">Featured Destination</span>
+            </div>
+        </div>
+    </div>
+
+    <!--footer -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--signupmodal -->
+
+    <div class="ui small modal " id="signup">
+        <div class="header">Sign Up</div>
+        <div class="content">
+            <form class="ui equal width form" action="/signup" method="POST">
+                <div class="required fields">
+                    <div class="field">
+                        <label>First Name</label>
+                        <input type="text" name="firstname" placeholder="First Name">
+                    </div>
+                    <div class="required field">
+                        <label>Last Name</label>
+                        <input type="text" name="lastname" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="required field">
+                    <label>E-mail</label>
+                    <input type="email" name="username" placeholder="joe@schmoe.com">
+                </div>
+                <div class="required field">
+                    <label>Password</label>
+                    <input type="password" name="password">
+                </div>
+                <div class="required field">
+                    <div class="ui  checkbox">
+                        <input type="checkbox" name="terms">
+                        <label>I agree to the Terms and Conditions</label>
+                    </div>
+                </div>
+
+
+        </div>
+        <div class="actions">
+            <button type="submit" class="ui green button" id="register">Register</button>
+            <div class="ui cancel button">Cancel</div>
+        </div>
+        </form>
+    </div>
+    <!-- sign up model ends here -->
+
+    <!-- login modal  -->
+
+    <div class="ui small modal " id="login">
+        <div class="header">Log In</div>
+        <div class="content">
+            <form class="ui equal width form" action="/login" method="POST" >
+
+                <div class="required field">
+                    <label>E-mail</label>
+                    <input type="email" name="username" placeholder="joe@schmoe.com">
+                </div>
+                <div class="required field">
+                    <label>Password</label>
+                    <input type="password" name="password" >
+                </div>
+        </div>
+        <div class="actions">
+            <button type="submit" class="ui blue button">Log In</button>
+            <div class="ui cancel button">Cancel</div>
+        </div>
+        </form>
+    </div>
+    <!-- login model ends here -->
+
+
+    <script src="js/semantic.min.js"></script>
+    <script src="js/script.js"></script>
+    
+</body>
+    <script src="js/particles.min.js"></script>
+    <script src="js/partical-animation.js"></script>
+</html>
