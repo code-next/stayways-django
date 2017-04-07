@@ -7,11 +7,11 @@
     <title>Stayways | Finding a long termrental accommodation made easy</title>
     <meta charset="UTF-8">
     <link href="css/font.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href=" css/partical-animation.css">
-    <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
-    <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <script src="js/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/partical-animation.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/semantic.min.css' %}">
+    <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery.js' %}"></script>
 
 
 </head>
@@ -24,7 +24,7 @@
             <div class="layer">
                 <div class="ui grid container ">
                     <div class="four wide column ">
-                        <div class="logo"><img src="./logo.png" alt="Stayways" height="40px"></div>
+                        <div class="logo"><img src="{% static './logo.png' %}" alt="Stayways" height="40px"></div>
                     </div>
                     <div class="twelve wide column nav">
                         <div class="nav-buttons"><button id="sign" class=" ui  green button ">Sign Up</button></div>
@@ -168,10 +168,10 @@
     <!-- login model ends here -->
 
 
-    <script src="js/semantic.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="{% static 'js/semantic.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
     
 </body>
-    <script src="js/particles.min.js"></script>
-    <script src="js/partical-animation.js"></script>
+    <script src="{% static 'js/particles.min.js' %}"></script>
+    <script src="{% static 'js/partical-animation.js' %}"></script>
 </html>

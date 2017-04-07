@@ -21,7 +21,7 @@ class Room(models.Model):
     room_id = models.AutoField(primary_key=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     type = models.CharField("Type of Room", max_length=10)
-    photo = models.ImageField("Image")
+    photo = models.FileField()
     price = models.IntegerField("Price")
     city = models.CharField("City", max_length=100)
     state = models.CharField("State", max_length=100)
