@@ -68,21 +68,21 @@
         <div class="row">
             <div class="one wide column"></div>
             <div class="nine wide column">
-              <h1>We find rooms & villas that people love!</h1>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                <h1>We find rooms & villas that people love!</h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
             </div>
             <div class="right aligned five wide column">
                 <div class="ui vertical animated green button" tabindex="0">
                     <div class="visible content">Become a Host</div>
                     <div class="hidden content">Become a Host</div>
-                </div>          
+                </div>
             </div>
             <div class="one wide column"></div>
         </div>
         <div class="row">
             <div class="one wide column"></div>
             <div class="nine wide column">
-            <span class="sliderHeader">Featured Destination</span>
+                <span class="sliderHeader">Featured Destination</span>
             </div>
         </div>
     </div>
@@ -107,7 +107,8 @@
     <div class="ui small modal " id="signup">
         <div class="header">Sign Up</div>
         <div class="content">
-            <form class="ui equal width form" action="/signup" method="POST">
+            <form class="ui equal width form" action="" method="POST">
+                {% comment %}
                 <div class="required fields">
                     <div class="field">
                         <label>First Name</label>
@@ -125,21 +126,39 @@
                 <div class="required field">
                     <label>Password</label>
                     <input type="password" name="password">
-                </div>
+                </div>{% endcomment %} {% csrf_token %} {% comment %}{% include "main/form-template.html" %}{% endcomment %}
+                <div class="required fields">
+                    {% for field in form %}
+                        {% if forloop.counter <= 2  %}
+                            <div class="required field">
+                                <label>{{ field.label_tag }}</label>
+                                <span>{{ field.errors }}</span> {{ field }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+        </div>
+        {% for field in form|slice:"2:" %}
+            {% if forloop.counter >= 3  %}
                 <div class="required field">
-                    <div class="ui  checkbox">
-                        <input type="checkbox" name="terms">
-                        <label>I agree to the Terms and Conditions</label>
-                    </div>
+                    <label>{{ field.label_tag }}</label>
+                    <span>{{ field.errors }}</span> {{ field }}
                 </div>
+            {% endif %}
+        {% endfor %}
+        <div class="required field">
+            <div class="ui  checkbox">
+                <input type="checkbox" name="terms">
+                <label>I agree to the Terms and Conditions</label>
+            </div>
+        </div>
 
 
-        </div>
-        <div class="actions">
-            <button type="submit" class="ui green button" id="register">Register</button>
-            <div class="ui cancel button">Cancel</div>
-        </div>
-        </form>
+    </div>
+    <div class="actions">
+        <button type="submit" class="ui green button" id="register">Register</button>
+        <div class="ui cancel button">Cancel</div>
+    </div>
+    </form>
     </div>
     <!-- sign up model ends here -->
 
@@ -148,15 +167,15 @@
     <div class="ui small modal " id="login">
         <div class="header">Log In</div>
         <div class="content">
-            <form class="ui equal width form" action="/login" method="POST" >
-
+            <form class="ui equal width form" action="/login/" method="POST">
+                {% csrf_token %}
                 <div class="required field">
                     <label>E-mail</label>
                     <input type="email" name="username" placeholder="joe@schmoe.com">
                 </div>
                 <div class="required field">
                     <label>Password</label>
-                    <input type="password" name="password" >
+                    <input type="password" name="Password">
                 </div>
         </div>
         <div class="actions">
@@ -170,8 +189,9 @@
 
     <script src="{% static 'js/semantic.min.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
-    
+
 </body>
-    <script src="{% static 'js/particles.min.js' %}"></script>
-    <script src="{% static 'js/partical-animation.js' %}"></script>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script src="{% static 'js/partical-animation.js' %}"></script>
+
 </html>
