@@ -7,4 +7,5 @@ urlpatterns=[
      url(r'^signup/',views.signup),
     url(r'^login/$',views.signin),
     url(r'^room/$',views.roomlistview),
+    url(r'^addroom/$',views.AddRoom),
 ]

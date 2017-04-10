@@ -18,12 +18,12 @@ class Person(models.Model):
 class Room(models.Model):
     room_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    type = models.CharField("Type of Room", max_length=10)
+    type = models.CharField("Type of Room",max_length=255)
     photo = models.FileField()
-    price = models.IntegerField("Price")
+    price = models.FloatField("Price")
     city = models.CharField("City", max_length=100)
     state = models.CharField("State", max_length=100)
-    country = models.CharField("Country", max_length=100)
+    # country = models.CharField("Country", max_length=100)
     Zipcode = models.CharField("Zip Code", max_length=20)
 
     def __str__(self):

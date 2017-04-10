@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+    <div class="row"></div>
+    <div class="row">
+        <div class="two wide column"></div>
+        <div class="four wide column">
+    <!-- add room -->
+                   
+                    <form class="ui form" action="/addroom/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                     <div class="required field">
+                                <select class="ui search dropdown" name="type">
+                                    <option value="">Room type</option>
+                                    <option value="Private">Private</option>
+                                    <option value="Shared">Shared</option>
+                                    <option value="Hostel">Hostel</option>
+                                    <option value="EntireHome">Entire Home</option>
+                                </select>
+                            </div>
+                    
+                    <div class="required field">
+                            <div class="required field">
+                                <label>City</label>
+                                <input type="text" required name="city" placeholder="ernakulam">
+                            </div>
+                            <div class="required field">
+                                <label>State</label>
+                                <input type="text" required name="state" placeholder="kerala">
+                            </div>
+                    </div>
+                    <div class="field">
+                                <div class="field">
+                                    <div class="required field">
+                                            <label>Zipcode</label>
+                                            <input type="text" required name="zipcode" placeholder="680665">
+                                        </div>
+                                </div>
+                                <div class="required field">
+                                        <div class="ui right labeled input">
+                                        <div class="ui label">$</div>
+                                        <input type="text" required name="price" placeholder="Amount">
+                                        <div class="ui basic label">.00</div>
+                                        </div>
+                                </div>
+                    </div>
+                    <div class="field">
+                                    <div class="required field">
+                                            <label>Photo</label>
+                                            <input type="file" required name="upload" placeholder="album.jpg">
+                                        </div>
+                                </div>
+
+                    <button class="ui button" type="submit">Submit</button>
+                    </form>
+    <!-- add room form -->
+    </div>
+    </div>
+ 
+{% endblock content %}
