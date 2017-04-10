@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width">
     <title>Stayways | Finding a long termrental accommodation made easy</title>
     <meta charset="UTF-8">
-    <link href="css/font.css" rel="stylesheet">
+    <link href="{% static 'css/font.css' %}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/partical-animation.css' %} ">
     <link rel="stylesheet" type="text/css" href="{% static 'css/semantic.min.css' %}">
     <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <script src="{% static 'js/jquery.js' %}"></script>
-
+    <script src="{% static 'js/semantic.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 
 </head>
 
@@ -24,7 +25,7 @@
             <div class="layer">
                 <div class="ui grid container ">
                     <div class="four wide column ">
-                        <div class="logo"><img src="{% static './logo.png' %}" alt="Stayways" height="40px"></div>
+                        <div class="logo"><img src="{% static 'images/logo.png' %}" alt="Stayways" height="40px"></div>
                     </div>
                     <div class="twelve wide column nav">
                         <div class="nav-buttons"><button id="sign" class=" ui  green button ">Sign Up</button></div>
@@ -107,8 +108,8 @@
     <div class="ui small modal " id="signup">
         <div class="header">Sign Up</div>
         <div class="content">
-            <form class="ui equal width form" action="" method="POST">
-                {% comment %}
+            <form class="ui equal width form" action="/signup/" method="POST">
+                {% csrf_token %} 
                 <div class="required fields">
                     <div class="field">
                         <label>First Name</label>
@@ -126,18 +127,9 @@
                 <div class="required field">
                     <label>Password</label>
                     <input type="password" name="password">
-                </div>{% endcomment %} {% csrf_token %} {% comment %}{% include "main/form-template.html" %}{% endcomment %}
-                <div class="required fields">
-                    {% for field in form %}
-                        {% if forloop.counter <= 2  %}
-                            <div class="required field">
-                                <label>{{ field.label_tag }}</label>
-                                <span>{{ field.errors }}</span> {{ field }}
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-        </div>
-        {% for field in form|slice:"2:" %}
+                </div> 
+                
+        {% comment %}{% for field in form|slice:"2:" %}
             {% if forloop.counter >= 3  %}
                 <div class="required field">
                     <label>{{ field.label_tag }}</label>
@@ -150,7 +142,7 @@
                 <input type="checkbox" name="terms">
                 <label>I agree to the Terms and Conditions</label>
             </div>
-        </div>
+        </div>{% endcomment %}
 
 
     </div>
@@ -175,7 +167,7 @@
                 </div>
                 <div class="required field">
                     <label>Password</label>
-                    <input type="password" name="Password">
+                    <input type="password" name="password">
                 </div>
         </div>
         <div class="actions">
@@ -186,12 +178,45 @@
     </div>
     <!-- login model ends here -->
 
+<script>
+    $('#signup')
+        .modal('hide');
 
-    <script src="{% static 'js/semantic.min.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script>
+    $('#sign').click(function () {
+        $('#signup')
+            .modal({
+                blurring: true
+            })
+            .modal('show')
+            .modal({ backdrop: 'static', keyboard: false });
+    });
 
-</body>
+
+
+
+    $('#login')
+        .modal('hide');
+
+    $('#log').click(function () {
+        $('#login')
+            .modal({
+                blurring: true
+            })
+            .modal('show')
+            .modal({ backdrop: 'static', keyboard: false });
+    });
+
+
+
+
+    $('.special.cards .image').dimmer({
+        on: 'hover'
+    });
+
+</script>
 <script src="{% static 'js/particles.min.js' %}"></script>
 <script src="{% static 'js/partical-animation.js' %}"></script>
+</body>
+
 
 </html>

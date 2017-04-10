@@ -5,42 +5,9 @@
         return false;
     });
 
-      $('#signup')
-            .modal('hide');
-
-        $('#sign').click(function() {
-            $('#signup')
-                .modal({
-                    blurring: true
-                })
-                .modal('show')
-                .modal({
-                    backdrop: 'static',
-                    keyboard: false
-                });
-        });
-
-        $('#login')
-            .modal('hide');
-
-        $('#log').click(function() {
-            $('#login')
-                .modal({
-                    blurring: true
-                })
-                .modal('show')
-                .modal({
-                    backdrop: 'static',
-                    keyboard: false
-                });
-        });
-
+   
       
 
-
-        $('.special.cards .image').dimmer({
-            on: 'hover'
-        });
 
   $('a[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -54,5 +21,17 @@
       }
     }
   });
-        
+
+//   $('.ui.rating')
+//         .rating('setting', 'onRate', function(value) {
+//       // your amazing code here
+//   });
+
+$('.ui.rating')
+  .rating({
+    initialRating: 3,
+    maxRating: 5
+  })
+;
+   
 })(jQuery)

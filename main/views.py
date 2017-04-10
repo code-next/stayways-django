@@ -1,49 +1,44 @@
 from django.shortcuts import render, redirect
-from django.views.generic import View
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+from django.http import HttpResponse
 from . import models
 from . import forms 
 
 
 
-class home(View):
-    form_class = forms.UserForm
-    template_name = 'index.html'
-    
-    def get(self,request):
-        form = self.form_class(None)
-        return render(request,self.template_name,{'form':form})
+def index(request):
+    if request.method =="GET":
+        return render(request, "index.html")
 
-    def post(self,request):
-        form=self.form_class(request.POST)
-
-        if form.is_valid():
-
-            user = form.save(commit=False)
-            #cleaned normalized data
-            username = form.cleaned_data['username']
-            Password = form.cleaned_data['Password']
-            user.set_password(Password)
-            form.save()
-
-            user = authenticate(username=username,Password=Password)
-
-            if user is not None:
-                if user.is_active:
-                    login(request,user)
-                    return redirect('main:index')
-        return render(request,self.template_name,{'form':form})
-
-def login(request):
-    if request.POST:
-        username = request.POST.get('username')
-        Password = request.POST.get('Password')
-
-        user = authenticate(username=username,Password=Password)
+def signup(request):
+    if request.method =="POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        print(username + password)
+        User.objects.create_user(username,username, password)
+        user = authenticate(username=username, password=password)
 
         if user is not None:
-            if user.is_active:
-                login(request,user)
-                return redirect('main:index')
+            login(request, user)
+            # Redirect to a success page.
+            return HttpResponse("you are logged in")
         else:
-            return redirect('/404')
+            return HttpResponse("something wend wrong")
+
+def signin(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Redirect to a success page.
+            return HttpResponse("you are logged in")
+
+        else:
+            return HttpResponse("something wend wrong")
+
+
+def roomlistview(request):
+    return render(request,'roomlistview.html')
