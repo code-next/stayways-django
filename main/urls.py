@@ -8,4 +8,7 @@ urlpatterns=[
     url(r'^login/$',views.signin),
     url(r'^room/$',views.roomlistview),
     url(r'^addroom/$',views.AddRoom),
+    url(r'^dashboard',views.dashboard),
+    url(r'^room/(?P<rid>[0-9]+)/$', views.room_detail),
+    url(r'^logout/$',views.logout_view),
 ]

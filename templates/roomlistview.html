@@ -100,19 +100,21 @@
                                          <div id="wrapper">
                                              <div id="columns">
                                                         <!-- card starts -->
+                                                 {% for room in rooms %}
+                                                     <a href="/room/{{ room.room_id }}/">
                                                     <div class="roomcard">
-                                                        <img src="/media/room.jpg"/>
+                                                        <img src="/media/{{ room.photo }}"/>
                                                         <div class="ui grid">
                                                                     <div class="row marginRow">
                                                                         <div class="left aligned sixteen wide column">
-                                                                            <span class="roomType">Private  Room</span>
-                                                                            <span class="roomPrice">₹ 4100</span>
+                                                                            <span class="roomType">{{ room.type }}</span>
+                                                                            <span class="roomPrice">₹ {{ room.price }}</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row marginSecRow bedrow">
                                                                         <div class="left aligned column">
                                                                             <span class="roomBeds">2 beds</span>
-                                                                            <span class="roomBeds locality">ernakulam,mannam</span>
+                                                                            <span class="roomBeds locality">{{ room.place }}</span>
                                                                         </div>
                                                                     </div>
                                                         </div>
@@ -142,184 +144,184 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
+                                                     </a>
+                                                    {% endfor %}
                                                     <!-- card ends -->
                                                     <!-- card starts -->
-                                                    <div class="roomcard">
-                                                        <img src="/media/room.jpg"/>
-                                                        <div class="ui grid">
-                                                                    <div class="row marginRow">
-                                                                        <div class="left aligned sixteen wide column">
-                                                                            <span class="roomType">Private  Room</span>
-                                                                            <span class="roomPrice">₹ 4100</span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row marginSecRow bedrow">
-                                                                        <div class="left aligned column">
-                                                                            <span class="roomBeds">2 beds</span>
-                                                                            <span class="roomBeds locality">ernakulam,mannam</span>
-                                                                        </div>
-                                                                    </div>
-                                                        </div>
-                                                        <div class="ui divider"></div>
-                                                        <div class="ui grid">
-                                                            <div class="row marginSecRow">
-                                                                    <div class="left aligned column">
-                                                                        <p>
-                                                                            <span>fully furnished 3 bedroom flat.lohrem is the dummy text used in web development</span>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                        </div>
-                                                        <div class="ui divider"></div>
-                                                        <div class="ui grid">
-                                                            <div class="row marginSecRow">
-                                                                <div class="left aligned column">
-                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">
-                                                                                <i class="icon active"></i>
-                                                                                <i class="icon active"></i>
-                                                                                <i class="icon"></i>
-                                                                                <i class="icon"></i>
-                                                                                <i class="icon"></i>
-                                                                    </div>
-                                                                    <span class="review">4 reviews</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                 <!-- card ends -->
-                                                 <!-- card starts -->
-                                                 <div class="roomcard">
-                                                        <img src="/media/room.jpg"/>
-                                                        <div class="ui grid">
-                                                                    <div class="row marginRow">
-                                                                        <div class="left aligned sixteen wide column">
-                                                                            <span class="roomType">Private  Room</span>
-                                                                            <span class="roomPrice">₹ 4100</span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row marginSecRow bedrow">
-                                                                        <div class="left aligned column">
-                                                                            <span class="roomBeds">2 beds</span>
-                                                                            <span class="roomBeds locality">ernakulam,mannam</span>
-                                                                        </div>
-                                                                    </div>
-                                                        </div>
-                                                        <div class="ui divider"></div>
-                                                        <div class="ui grid">
-                                                            <div class="row marginSecRow">
-                                                                    <div class="left aligned column">
-                                                                        <p>
-                                                                            <span>fully furnished 3 bedroom flat.lohrem is the dummy text used in web development</span>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                        </div>
-                                                        <div class="ui divider"></div>
-                                                        <div class="ui grid">
-                                                            <div class="row marginSecRow">
-                                                                <div class="left aligned column">
-                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">
-                                                                                <i class="icon active"></i>
-                                                                                <i class="icon active"></i>
-                                                                                <i class="icon"></i>
-                                                                                <i class="icon"></i>
-                                                                                <i class="icon"></i>
-                                                                    </div>
-                                                                    <span class="review">4 reviews</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                 <!-- card ends -->
-                                                 <!-- card starts -->
-                                                 <div class="roomcard">
-                                                        <img src="/media/room.jpg"/>
-                                                        <div class="ui grid">
-                                                                    <div class="row marginRow">
-                                                                        <div class="left aligned sixteen wide column">
-                                                                            <span class="roomType">Private  Room</span>
-                                                                            <span class="roomPrice">₹ 4100</span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row marginSecRow bedrow">
-                                                                        <div class="left aligned column">
-                                                                            <span class="roomBeds">2 beds</span>
-                                                                            <span class="roomBeds locality">ernakulam,mannam</span>
-                                                                        </div>
-                                                                    </div>
-                                                        </div>
-                                                        <div class="ui divider"></div>
-                                                        <div class="ui grid">
-                                                            <div class="row marginSecRow">
-                                                                    <div class="left aligned column">
-                                                                        <p>
-                                                                            <span>fully furnished 3 bedroom flat.lohrem is the dummy text used in web development</span>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                        </div>
-                                                        <div class="ui divider"></div>
-                                                        <div class="ui grid">
-                                                            <div class="row marginSecRow">
-                                                                <div class="left aligned column">
-                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">
-                                                                                <i class="icon active"></i>
-                                                                                <i class="icon active"></i>
-                                                                                <i class="icon"></i>
-                                                                                <i class="icon"></i>
-                                                                                <i class="icon"></i>
-                                                                    </div>
-                                                                    <span class="review">4 reviews</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                 <!-- card ends -->
-                                                 <!-- card starts -->
-                                                 <div class="roomcard">
-                                                        <img src="/media/room.jpg"/>
-                                                        <div class="ui grid">
-                                                                    <div class="row marginRow">
-                                                                        <div class="left aligned sixteen wide column">
-                                                                            <span class="roomType">Private  Room</span>
-                                                                            <span class="roomPrice">₹ 4100</span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row marginSecRow bedrow">
-                                                                        <div class="left aligned column">
-                                                                            <span class="roomBeds">2 beds</span>
-                                                                            <span class="roomBeds locality">ernakulam,mannam</span>
-                                                                        </div>
-                                                                    </div>
-                                                        </div>
-                                                        <div class="ui divider"></div>
-                                                        <div class="ui grid">
-                                                            <div class="row marginSecRow">
-                                                                    <div class="left aligned column">
-                                                                        <p>
-                                                                            <span>fully furnished 3 bedroom flat.lohrem is the dummy text used in web development</span>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                        </div>
-                                                        <div class="ui divider"></div>
-                                                        <div class="ui grid">
-                                                            <div class="row marginSecRow">
-                                                                <div class="left aligned column">
-                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">
-                                                                                <i class="icon active"></i>
-                                                                                <i class="icon active"></i>
-                                                                                <i class="icon"></i>
-                                                                                <i class="icon"></i>
-                                                                                <i class="icon"></i>
-                                                                    </div>
-                                                                    <span class="review">4 reviews</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+{#                                                    <div class="roomcard">#}
+{#                                                        <img src="/media/room.jpg"/>#}
+{#                                                        <div class="ui grid">#}
+{#                                                                    <div class="row marginRow">#}
+{#                                                                        <div class="left aligned sixteen wide column">#}
+{#                                                                            <span class="roomType">Private  Room</span>#}
+{#                                                                            <span class="roomPrice">₹ 4100</span>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                                    <div class="row marginSecRow bedrow">#}
+{#                                                                        <div class="left aligned column">#}
+{#                                                                            <span class="roomBeds">2 beds</span>#}
+{#                                                                            <span class="roomBeds locality">ernakulam,mannam</span>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                        </div>#}
+{#                                                        <div class="ui divider"></div>#}
+{#                                                        <div class="ui grid">#}
+{#                                                            <div class="row marginSecRow">#}
+{#                                                                    <div class="left aligned column">#}
+{#                                                                        <p>#}
+{#                                                                            <span>fully furnished 3 bedroom flat.lohrem is the dummy text used in web development</span>#}
+{#                                                                        </p>#}
+{#                                                                    </div>#}
+{#                                                                </div>#}
+{#                                                        </div>#}
+{#                                                        <div class="ui divider"></div>#}
+{#                                                        <div class="ui grid">#}
+{#                                                            <div class="row marginSecRow">#}
+{#                                                                <div class="left aligned column">#}
+{#                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">#}
+{#                                                                                <i class="icon active"></i>#}
+{#                                                                                <i class="icon active"></i>#}
+{#                                                                                <i class="icon"></i>#}
+{#                                                                                <i class="icon"></i>#}
+{#                                                                                <i class="icon"></i>#}
+{#                                                                    </div>#}
+{#                                                                    <span class="review">4 reviews</span>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                 <!-- card ends -->#}
+{#                                                 <!-- card starts -->#}
+{#                                                 <div class="roomcard">#}
+{#                                                        <img src="/media/room.jpg"/>#}
+{#                                                        <div class="ui grid">#}
+{#                                                                    <div class="row marginRow">#}
+{#                                                                        <div class="left aligned sixteen wide column">#}
+{#                                                                            <span class="roomType">Private  Room</span>#}
+{#                                                                            <span class="roomPrice">₹ 4100</span>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                                    <div class="row marginSecRow bedrow">#}
+{#                                                                        <div class="left aligned column">#}
+{#                                                                            <span class="roomBeds">2 beds</span>#}
+{#                                                                            <span class="roomBeds locality">ernakulam,mannam</span>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                        </div>#}
+{#                                                        <div class="ui divider"></div>#}
+{#                                                        <div class="ui grid">#}
+{#                                                            <div class="row marginSecRow">#}
+{#                                                                    <div class="left aligned column">#}
+{#                                                                        <p>#}
+{#                                                                            <span>fully furnished 3 bedroom flat.lohrem is the dummy text used in web development</span>#}
+{#                                                                        </p>#}
+{#                                                                    </div>#}
+{#                                                                </div>#}
+{#                                                        </div>#}
+{#                                                        <div class="ui divider"></div>#}
+{#                                                        <div class="ui grid">#}
+{#                                                            <div class="row marginSecRow">#}
+{#                                                                <div class="left aligned column">#}
+{#                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">#}
+{#                                                                                <i class="icon active"></i>#}
+{#                                                                                <i class="icon active"></i>#}
+{#                                                                                <i class="icon"></i>#}
+{#                                                                                <i class="icon"></i>#}
+{#                                                                                <i class="icon"></i>#}
+{#                                                                    </div>#}
+{#                                                                    <span class="review">4 reviews</span>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                 <!-- card ends -->#}
+{#                                                 <!-- card starts -->#}
+{#                                                 <div class="roomcard">#}
+{#                                                        <img src="/media/room.jpg"/>#}
+{#                                                        <div class="ui grid">#}
+{#                                                                    <div class="row marginRow">#}
+{#                                                                        <div class="left aligned sixteen wide column">#}
+{#                                                                            <span class="roomType">Private  Room</span>#}
+{#                                                                            <span class="roomPrice">₹ 4100</span>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                                    <div class="row marginSecRow bedrow">#}
+{#                                                                        <div class="left aligned column">#}
+{#                                                                            <span class="roomBeds">2 beds</span>#}
+{#                                                                            <span class="roomBeds locality">ernakulam,mannam</span>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                        </div>#}
+{#                                                        <div class="ui divider"></div>#}
+{#                                                        <div class="ui grid">#}
+{#                                                            <div class="row marginSecRow">#}
+{#                                                                    <div class="left aligned column">#}
+{#                                                                        <p>#}
+{#                                                                            <span>fully furnished 3 bedroom flat.lohrem is the dummy text used in web development</span>#}
+{#                                                                        </p>#}
+{#                                                                    </div>#}
+{#                                                                </div>#}
+{#                                                        </div>#}
+{#                                                        <div class="ui divider"></div>#}
+{#                                                        <div class="ui grid">#}
+{#                                                            <div class="row marginSecRow">#}
+{#                                                                <div class="left aligned column">#}
+{#                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">#}
+{#                                                                                <i class="icon active"></i>#}
+{#                                                                                <i class="icon active"></i>#}
+{#                                                                                <i class="icon"></i>#}
+{#                                                                                <i class="icon"></i>#}
+{#                                                                                <i class="icon"></i>#}
+{#                                                                    </div>#}
+{#                                                                    <span class="review">4 reviews</span>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                 <!-- card ends -->#}
+{#                                                 <!-- card starts -->#}
+{#                                                 <div class="roomcard">#}
+{#                                                        <img src="/media/room.jpg"/>#}
+{#                                                        <div class="ui grid">#}
+{#                                                                    <div class="row marginRow">#}
+{#                                                                        <div class="left aligned sixteen wide column">#}
+{#                                                                            <span class="roomType">Private  Room</span>#}
+{#                                                                            <span class="roomPrice">₹ 4100</span>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                                    <div class="row marginSecRow bedrow">#}
+{#                                                                        <div class="left aligned column">#}
+{#                                                                            <span class="roomBeds">2 beds</span>#}
+{#                                                                            <span class="roomBeds locality">ernakulam,mannam</span>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                        </div>#}
+{#                                                        <div class="ui divider"></div>#}
+{#                                                        <div class="ui grid">#}
+{#                                                            <div class="row marginSecRow">#}
+{#                                                                    <div class="left aligned column">#}
+{#                                                                        <p>#}
+{#                                                                            <span>fully furnished 3 bedroom flat.lohrem is the dummy text used in web development</span>#}
+{#                                                                        </p>#}
+{#                                                                    </div>#}
+{#                                                                </div>#}
+{#                                                        </div>#}
+{#                                                        <div class="ui divider"></div>#}
+{#                                                        <div class="ui grid">#}
+{#                                                            <div class="row marginSecRow">#}
+{#                                                                <div class="left aligned column">#}
+{#                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">#}
+{#                                                                                <i class="icon active"></i>#}
+{#                                                                                <i class="icon active"></i>#}
+{#                                                                                <i class="icon"></i>#}
+{#                                                                                <i class="icon"></i>#}
+{#                                                                                <i class="icon"></i>#}
+{#                                                                    </div>#}
+{#                                                                    <span class="review">4 reviews</span>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
                                                  <!-- card ends -->
 
                                             </div>

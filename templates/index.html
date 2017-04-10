@@ -28,9 +28,14 @@
                         <div class="logo"><img src="{% static 'images/logo.png' %}" alt="Stayways" height="40px"></div>
                     </div>
                     <div class="twelve wide column nav">
+                         {% if user.is_authenticated %}
+                             <div class="nav-buttons"><a href="/logout/"><button  class="ui inverted button">Log Out</button></a></div>
+
+                         {% else %}
                         <div class="nav-buttons"><button id="sign" class=" ui  green button ">Sign Up</button></div>
                         <div class="nav-buttons"><button id="log" class="ui inverted button">Log In</button></div>
                         <div class="nav-buttons"><button class="ui inverted basic button">Host accommodation</button></div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="textarea">
@@ -41,21 +46,23 @@
                         <span class="subtitle">Discover Long Term Accommodations</span>
                     </div>
                 </div>
+            <form action="/room/" method="post">
+                {% csrf_token %}
                 <div class="ui grid searcharea center aligned ">
                     <div class="searchbar">
                         <div class="ui huge form">
                             <div class="two fields">
                                 <div class="fourteen wide field">
-                                    <input type="text" placeholder="Where do you want to live ?">
+                                    <input name="place" type="text" placeholder="Where do you want to live ?">
                                 </div>
                                 <div class="two wide field">
-                                    <button class="huge ui blue button">Search</button>
+                                    <button type="submit" class="huge ui blue button">Search</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+            </form>
             </div>
         </div>
         <a id="tohash" href="#firstNote" class="ui icon bounce"><i class="big angle down icon "></i></a>

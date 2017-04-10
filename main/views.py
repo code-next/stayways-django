@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from .models import Room, Review, Person
@@ -41,8 +41,12 @@ def signin(request):
 
 
 def roomlistview(request):
-    return render(request,'roomlistview.html')
-    
+    if request.method == "POST":
+        place  = request.POST['place']
+        rooms = Room.objects.filter(city = place).values()
+        return render(request,'roomlistview.html',{'rooms' : rooms})
+    if request.method == "GET":
+        return render(request,'roomlistview.html',{'rooms': Room.objects.filter().values()})
 
 def AddRoom(request):
     if request.method =="POST":
@@ -59,3 +63,17 @@ def AddRoom(request):
         Room(user=user,type=type,photo=photo,price=price,city=city,state=state,Zipcode=zipcode).save();
         return HttpResponse("something happened at there..")
 
+def dashboard(request):
+    if request.method == "GET":
+        return render(request,"dashboard.html")
+
+def room_detail(request,rid):
+    room = Room.objects.get(room_id=rid)
+    return render(request,'detail.html',{
+        'room' : room
+    })
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
