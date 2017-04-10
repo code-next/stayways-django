@@ -101,20 +101,20 @@
                                              <div id="columns">
                                                         <!-- card starts -->
                                                  {% for room in rooms %}
-                                                     <a href="/room/{{ room.room_id }}/">
+                                                     <a href="/room/{{ room.id }}/">
                                                     <div class="roomcard">
-                                                        <img src="/media/{{ room.photo }}"/>
+                                                        <img src="/media/{{ room.room.photo }}"/>
                                                         <div class="ui grid">
                                                                     <div class="row marginRow">
                                                                         <div class="left aligned sixteen wide column">
-                                                                            <span class="roomType">{{ room.type }}</span>
-                                                                            <span class="roomPrice">₹ {{ room.price }}</span>
+                                                                            <span class="roomType">{{ room.room.type }}</span>
+                                                                            <span class="roomPrice">₹ {{ room.room.price }}</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row marginSecRow bedrow">
                                                                         <div class="left aligned column">
                                                                             <span class="roomBeds">2 beds</span>
-                                                                            <span class="roomBeds locality">{{ room.place }}</span>
+                                                                            <span class="roomBeds locality">{{ room.room.place }}</span>
                                                                         </div>
                                                                     </div>
                                                         </div>
@@ -132,14 +132,14 @@
                                                         <div class="ui grid">
                                                             <div class="row marginSecRow">
                                                                 <div class="left aligned column">
-                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">
+                                                                    <div class="ui star rating" data-rating="{{ room.avg }}" role="radiogroup">
                                                                                 <i class="icon active"></i>
                                                                                 <i class="icon active"></i>
                                                                                 <i class="icon"></i>
                                                                                 <i class="icon"></i>
                                                                                 <i class="icon"></i>
                                                                     </div>
-                                                                    <span class="review">4 reviews</span>
+                                                                    <span class="review">{{ room.count }} reviews</span>
                                                                 </div>
                                                             </div>
                                                         </div>

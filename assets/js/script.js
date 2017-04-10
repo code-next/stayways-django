@@ -29,9 +29,9 @@
 
 $('.ui.rating')
   .rating({
-    initialRating: 3,
+    initialRating: 0,
     maxRating: 5
-  });
+  }).rating('disable');
 
 
 })(jQuery)
