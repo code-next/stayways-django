@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% load static from staticfiles %}
 {% block content %}
+<div class="ui grid mainLayer">
     <div class="row secondLayer gridrow">
         <div class="one wide column"></div>
         <div class="center aligned fourteen wide column">
@@ -118,7 +119,7 @@
                                                                     <div class="row marginSecRow bedrow">
                                                                         <div class="left aligned column">
                                                                             <span class="roomBeds">2 beds</span>
-                                                                            <span class="roomBeds locality">{{ room.city }}</span>
+                                                                            <span class="roomBeds locality">{{ room.state|title }},{{ room.city|title }}</span>
                                                                         </div>
                                                                     </div>
                                                         </div>
@@ -151,182 +152,7 @@
                                                      </a>
                                                     {% endfor %}
                                                     <!-- card ends -->
-                                                    <!-- card starts -->
-{#                                                    <div class="roomcard">#}
-{#                                                        <img src="/media/room.jpg"/>#}
-{#                                                        <div class="ui grid">#}
-{#                                                                    <div class="row marginRow">#}
-{#                                                                        <div class="left aligned sixteen wide column">#}
-{#                                                                            <span class="roomType">Private  Room</span>#}
-{#                                                                            <span class="roomPrice">₹ 4100</span>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                                    <div class="row marginSecRow bedrow">#}
-{#                                                                        <div class="left aligned column">#}
-{#                                                                            <span class="roomBeds">2 beds</span>#}
-{#                                                                            <span class="roomBeds locality">ernakulam,mannam</span>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="ui divider"></div>#}
-{#                                                        <div class="ui grid">#}
-{#                                                            <div class="row marginSecRow">#}
-{#                                                                    <div class="left aligned column">#}
-{#                                                                        <p>#}
-{#                                                                            <span>fully furnished 3 bedroom flat.lohrem is the dummy text used in web development</span>#}
-{#                                                                        </p>#}
-{#                                                                    </div>#}
-{#                                                                </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="ui divider"></div>#}
-{#                                                        <div class="ui grid">#}
-{#                                                            <div class="row marginSecRow">#}
-{#                                                                <div class="left aligned column">#}
-{#                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">#}
-{#                                                                                <i class="icon active"></i>#}
-{#                                                                                <i class="icon active"></i>#}
-{#                                                                                <i class="icon"></i>#}
-{#                                                                                <i class="icon"></i>#}
-{#                                                                                <i class="icon"></i>#}
-{#                                                                    </div>#}
-{#                                                                    <span class="review">4 reviews</span>#}
-{#                                                                </div>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                 <!-- card ends -->#}
-{#                                                 <!-- card starts -->#}
-{#                                                 <div class="roomcard">#}
-{#                                                        <img src="/media/room.jpg"/>#}
-{#                                                        <div class="ui grid">#}
-{#                                                                    <div class="row marginRow">#}
-{#                                                                        <div class="left aligned sixteen wide column">#}
-{#                                                                            <span class="roomType">Private  Room</span>#}
-{#                                                                            <span class="roomPrice">₹ 4100</span>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                                    <div class="row marginSecRow bedrow">#}
-{#                                                                        <div class="left aligned column">#}
-{#                                                                            <span class="roomBeds">2 beds</span>#}
-{#                                                                            <span class="roomBeds locality">ernakulam,mannam</span>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="ui divider"></div>#}
-{#                                                        <div class="ui grid">#}
-{#                                                            <div class="row marginSecRow">#}
-{#                                                                    <div class="left aligned column">#}
-{#                                                                        <p>#}
-{#                                                                            <span>fully furnished 3 bedroom flat.lohrem is the dummy text used in web development</span>#}
-{#                                                                        </p>#}
-{#                                                                    </div>#}
-{#                                                                </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="ui divider"></div>#}
-{#                                                        <div class="ui grid">#}
-{#                                                            <div class="row marginSecRow">#}
-{#                                                                <div class="left aligned column">#}
-{#                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">#}
-{#                                                                                <i class="icon active"></i>#}
-{#                                                                                <i class="icon active"></i>#}
-{#                                                                                <i class="icon"></i>#}
-{#                                                                                <i class="icon"></i>#}
-{#                                                                                <i class="icon"></i>#}
-{#                                                                    </div>#}
-{#                                                                    <span class="review">4 reviews</span>#}
-{#                                                                </div>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                 <!-- card ends -->#}
-{#                                                 <!-- card starts -->#}
-{#                                                 <div class="roomcard">#}
-{#                                                        <img src="/media/room.jpg"/>#}
-{#                                                        <div class="ui grid">#}
-{#                                                                    <div class="row marginRow">#}
-{#                                                                        <div class="left aligned sixteen wide column">#}
-{#                                                                            <span class="roomType">Private  Room</span>#}
-{#                                                                            <span class="roomPrice">₹ 4100</span>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                                    <div class="row marginSecRow bedrow">#}
-{#                                                                        <div class="left aligned column">#}
-{#                                                                            <span class="roomBeds">2 beds</span>#}
-{#                                                                            <span class="roomBeds locality">ernakulam,mannam</span>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="ui divider"></div>#}
-{#                                                        <div class="ui grid">#}
-{#                                                            <div class="row marginSecRow">#}
-{#                                                                    <div class="left aligned column">#}
-{#                                                                        <p>#}
-{#                                                                            <span>fully furnished 3 bedroom flat.lohrem is the dummy text used in web development</span>#}
-{#                                                                        </p>#}
-{#                                                                    </div>#}
-{#                                                                </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="ui divider"></div>#}
-{#                                                        <div class="ui grid">#}
-{#                                                            <div class="row marginSecRow">#}
-{#                                                                <div class="left aligned column">#}
-{#                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">#}
-{#                                                                                <i class="icon active"></i>#}
-{#                                                                                <i class="icon active"></i>#}
-{#                                                                                <i class="icon"></i>#}
-{#                                                                                <i class="icon"></i>#}
-{#                                                                                <i class="icon"></i>#}
-{#                                                                    </div>#}
-{#                                                                    <span class="review">4 reviews</span>#}
-{#                                                                </div>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                 <!-- card ends -->#}
-{#                                                 <!-- card starts -->#}
-{#                                                 <div class="roomcard">#}
-{#                                                        <img src="/media/room.jpg"/>#}
-{#                                                        <div class="ui grid">#}
-{#                                                                    <div class="row marginRow">#}
-{#                                                                        <div class="left aligned sixteen wide column">#}
-{#                                                                            <span class="roomType">Private  Room</span>#}
-{#                                                                            <span class="roomPrice">₹ 4100</span>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                                    <div class="row marginSecRow bedrow">#}
-{#                                                                        <div class="left aligned column">#}
-{#                                                                            <span class="roomBeds">2 beds</span>#}
-{#                                                                            <span class="roomBeds locality">ernakulam,mannam</span>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="ui divider"></div>#}
-{#                                                        <div class="ui grid">#}
-{#                                                            <div class="row marginSecRow">#}
-{#                                                                    <div class="left aligned column">#}
-{#                                                                        <p>#}
-{#                                                                            <span>fully furnished 3 bedroom flat.lohrem is the dummy text used in web development</span>#}
-{#                                                                        </p>#}
-{#                                                                    </div>#}
-{#                                                                </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="ui divider"></div>#}
-{#                                                        <div class="ui grid">#}
-{#                                                            <div class="row marginSecRow">#}
-{#                                                                <div class="left aligned column">#}
-{#                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">#}
-{#                                                                                <i class="icon active"></i>#}
-{#                                                                                <i class="icon active"></i>#}
-{#                                                                                <i class="icon"></i>#}
-{#                                                                                <i class="icon"></i>#}
-{#                                                                                <i class="icon"></i>#}
-{#                                                                    </div>#}
-{#                                                                    <span class="review">4 reviews</span>#}
-{#                                                                </div>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-                                                 <!-- card ends -->
+                                               
 
                                             </div>
                                         </div>
@@ -343,5 +169,6 @@
             </div>
         </div>
     <div class="row"></div>
+    </div>
   
 {% endblock content %}

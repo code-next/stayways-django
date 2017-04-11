@@ -1,9 +1,6 @@
 (function() {
 
 
-})(jQuery)
-
-// index page effects
 
 $('#tohash').on('click', function() {
         $('html, body').animate({ scrollTop: $(this.hash).offset().top - 5 }, 1000);
@@ -27,40 +24,17 @@ $('#tohash').on('click', function() {
 
 
 
-// authentication model form effects
 
-  $('#signup')
-        .modal('hide');
+})(jQuery)
 
-    $('#sign').click(function () {
-        $('#signup')
-            .modal({
-                blurring: true
-            })
-            .modal('show')
-            .modal({ backdrop: 'static', keyboard: false });
-    });
+// index page effects
 
-    $('#login')
-        .modal('hide');
 
-    $('#log').click(function () {
-        $('#login')
-            .modal({
-                blurring: true
-            })
-            .modal('show')
-            .modal({ backdrop: 'static', keyboard: false });
-    });
 
-    $('.special.cards .image').dimmer({
-        on: 'hover'
-    });
 
-// model form effects end
 
-$('.ui.rating')
-  .rating({
-    initialRating: 0,
-    maxRating: 5
-  }).rating('disable');
+
+
+
+
+

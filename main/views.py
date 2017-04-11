@@ -112,7 +112,7 @@ def signin(request):
 #         return render(request,'roomlistview.html',{'rooms': data})
 
 
-@login_required
+
 def roomlistview(request):
     if request.method == "POST":
         place  = request.POST['place']
@@ -146,7 +146,7 @@ def AddRoom(request):
 def dashboard(request):
     if request.method == "GET":
         return render(request,"dashboard.html")
-@login_required
+        
 def room_detail(request,rid):
     room = Room.objects.get(room_id=rid)
     return render(request,'detail.html',{

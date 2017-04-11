@@ -1,13 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>stayways</title>
-</head>
-<body>
-  {{ room.id }}
-{{ room.city }}
-{{ room.user }}
-{{ room.price }}
-</body>
-</html>
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+{% block content %}
+    <div class="ui grid detail">
+        <div class="row cover_row">
+            <div class="sixteen wide column detail_cover">
+            </div>
+        </div>
+        <div class="row">
+            <div class="ui pink secondary pointing menu" id="detail_menu">
+                <a class="item active">
+                    Overview
+                </a>
+                <a class="item">
+                    Reviews
+                </a>
+                <a class="item">
+                   The Host
+                </a>
+                <a class="item">
+                   Location
+                </a>
+            </div>
+          
+        </div>
+        <div class="row overview">
+            <div class="two wide column"></div>
+            <div class="six wide column">
+                <div class="ui grid">
+                    <div class="row" style="height: 50px;"></div>
+                    <div class="row ">
+                        <span class="title">The Jaunt room II loherm is the dummy text used in the web devlopment</span>
+                    </div>
+                    <div class="row gaptitle"></div>
+                    <div class="row ">
+                        <div class="sixteen wide column place_column">
+                            <div style="float:left;margin-right: 20px;">
+                           <span class="place"> Ernakulam, Kerala, India</span></div>
+                           <div >
+                               <div class="ui star rating" data-rating="3"></div>
+                                <span class="place rv">5 Reviews</span>
+                            </div>
+                        </div>
+                        {% comment %}<div class="seven wide column ">
+                            
+                        </div>{% endcomment %}
+                    </div>
+                </div>
+            </div>
+            <div class="two wide column avatarcolumn">
+                <div class="avatarimg">
+                        <img class="ui tiny avatar image" src="{% static 'images/profile.jpg' %}">
+                </div>
+                <div class="avatarname">Paul</div> 
+            </div>
+            <div class="ui divider"></div>
+        </div>
+        <div class="row overview" style="margin-top:-10px;">
+            <div class="ui divider" style="width:50%;margin-left:10%;"></div>
+            <div class="ui four column grid typeIcons">
+                <div class="row" style="margin-top:-6px;">
+                    <div class="column">
+                        
+                        <i class="big grey lock icon"></i>
+                        <div class="avatarname">Private</div>
+                    </div>
+                    <div class="column">
+                        
+                        <i class="big grey users icon"></i>
+                    
+                        <div class="avatarname">1 Guest</div>
+                    </div>
+                    <div class="column">
+                        <i class="big grey file icon"></i>
+                        <div class="avatarname">1 Bedroom</div>
+                    </div>
+                    <div class="column">
+                        <i class="big grey archive icon"></i>
+                        <div class="avatarname">1 Bed</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row overview">
+            <div class="ui divider" style="width:50%;margin-left:10%; margin-top:-20px;"></div>
+        </div>
+        <div class="row overview" style="height: 400px;">
+
+        </div>
+    </div>
+{% endblock %}
