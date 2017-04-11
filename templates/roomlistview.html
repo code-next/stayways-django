@@ -4,7 +4,11 @@
     <div class="row secondLayer gridrow">
         <div class="one wide column"></div>
         <div class="center aligned fourteen wide column">
-            <div class="tophead"> DELHI - 1080 ROOMS</div>
+            <div class="tophead">{{city}} - {{ rooms.count }} {% if rooms.count == 1 %}
+              ROOM
+              {% else %}
+              ROOMS
+            {% endif %}</div>
             <div class="subtitleROOM"> loherm / sfsdfds / sdfdfs / loherm</div>
         </div>
         <div class="one wide column"></div>
@@ -101,20 +105,20 @@
                                              <div id="columns">
                                                         <!-- card starts -->
                                                  {% for room in rooms %}
-                                                     <a href="/room/{{ room.id }}/">
+                                                     <a href="/room/{{ room.room_id }}/">
                                                     <div class="roomcard">
-                                                        <img src="/media/{{ room.room.photo }}"/>
+                                                        <img src="/media/{{room.photo}}"/>
                                                         <div class="ui grid">
                                                                     <div class="row marginRow">
                                                                         <div class="left aligned sixteen wide column">
-                                                                            <span class="roomType">{{ room.room.type }}</span>
-                                                                            <span class="roomPrice">₹ {{ room.room.price }}</span>
+                                                                            <span class="roomType">{{ room.type|title }}</span>
+                                                                            <span class="roomPrice">₹ {{ room.price }}</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row marginSecRow bedrow">
                                                                         <div class="left aligned column">
                                                                             <span class="roomBeds">2 beds</span>
-                                                                            <span class="roomBeds locality">{{ room.room.place }}</span>
+                                                                            <span class="roomBeds locality">{{ room.city }}</span>
                                                                         </div>
                                                                     </div>
                                                         </div>
@@ -139,7 +143,7 @@
                                                                                 <i class="icon"></i>
                                                                                 <i class="icon"></i>
                                                                     </div>
-                                                                    <span class="review">{{ room.count }} reviews</span>
+                                                                    <span class="review">2 reviews</span>
                                                                 </div>
                                                             </div>
                                                         </div>

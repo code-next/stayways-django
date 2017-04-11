@@ -7,17 +7,20 @@
     <title>Stayways | Finding a long termrental accommodation made easy</title>
     <meta charset="UTF-8">
     <link href="{% static 'css/font.css' %}" rel="stylesheet">
+    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.css' %} ">
     <link rel="stylesheet" type="text/css" href="{% static 'css/partical-animation.css' %} ">
     <link rel="stylesheet" type="text/css" href="{% static 'css/semantic.min.css' %}">
     <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
     <script src="{% static 'js/semantic.min.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script>
-
+    <script src="{% static 'js/ajax.js' %}"></script>   
 </head>
 
 <body>
+
     <!-- main background -->
     <div class="ui grid">
         <div class="sixteen wide column masthead">
@@ -52,8 +55,9 @@
                     <div class="searchbar">
                         <div class="ui huge form">
                             <div class="two fields">
-                                <div class="fourteen wide field">
-                                    <input name="place" type="text" placeholder="Where do you want to live ?">
+                                <div class="fourteen wide field ui-widget">
+                                    {% csrf_token %}
+                                    <input name="place" type="text" placeholder="Where do you want to live ?" id="indexSearch">
                                 </div>
                                 <div class="two wide field">
                                     <button type="submit" class="huge ui blue button">Search</button>
@@ -71,11 +75,11 @@
 
 
     <!--after header -->
-    <div class="ui grid">
+    <div class="ui grid" >
         <div class="row"></div>
         <div class="row">
             <div class="one wide column"></div>
-            <div class="nine wide column">
+            <div class="nine wide column" id="firstNote">
                 <h1>We find rooms & villas that people love!</h1>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
             </div>
@@ -185,42 +189,7 @@
     </div>
     <!-- login model ends here -->
 
-<script>
-    $('#signup')
-        .modal('hide');
-
-    $('#sign').click(function () {
-        $('#signup')
-            .modal({
-                blurring: true
-            })
-            .modal('show')
-            .modal({ backdrop: 'static', keyboard: false });
-    });
-
-
-
-
-    $('#login')
-        .modal('hide');
-
-    $('#log').click(function () {
-        $('#login')
-            .modal({
-                blurring: true
-            })
-            .modal('show')
-            .modal({ backdrop: 'static', keyboard: false });
-    });
-
-
-
-
-    $('.special.cards .image').dimmer({
-        on: 'hover'
-    });
-
-</script>
+<script src="{% static 'js/script.js' %}"></script>
 <script src="{% static 'js/particles.min.js' %}"></script>
 <script src="{% static 'js/partical-animation.js' %}"></script>
 </body>

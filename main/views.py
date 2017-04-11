@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from .models import Room, Review, Person
 from django.contrib.auth.decorators import login_required
-from . import forms 
+import json
 import math
 
 
@@ -40,74 +40,87 @@ def signin(request):
         else:
             return HttpResponse("something wend wrong")
 
+# @login_required
+# def roomlistview(request):
+#     if request.method == "POST":
+#         place  = request.POST['place']
+#         rooms = Room.objects.all()
+
+#         class Empty:
+#             id =0
+#             room =0
+#             avg = 0
+#             count=0
+
+#         data =[]
+#         if rooms:
+#             print("ntho ind akath")
+#         for room in rooms:
+#             avg = 0
+#             reviewcount = Review.objects.filter(room=room.room_id).count()
+#             ratings = Review.objects.filter(room=room.room_id)
+#             norating =0
+#             for rating in ratings:
+#                 norating += rating.rating
+#             if reviewcount != 0:
+#                 avg=norating/reviewcount
+#             obj= Empty()
+#             obj.id = room.room_id
+#             obj.avg = math.floor(avg)
+#             obj.room = room
+#             obj.count = reviewcount
+#             data.append(obj)
+#         for i in data:
+#             print(i.id)
+#             print(i.avg)
+#         return render(request,'roomlistview.html',{'rooms' : data,
+
+
+#                                                    })
+
+
+#     if request.method == "GET":
+#         rooms = Room.objects.all()
+
+#         class Empty:
+#             id = 0
+#             room = 0
+#             avg = 0
+#             count = 0
+
+#         data = []
+#         if rooms:
+#             print("ntho ind akath")
+#         for room in rooms:
+#             avg = 0
+#             reviewcount = Review.objects.filter(room=room.room_id).count()
+#             ratings = Review.objects.filter(room=room.room_id)
+#             norating = 0
+#             for rating in ratings:
+#                 norating += rating.rating
+#             if reviewcount != 0:
+#                 avg = norating / reviewcount
+#             obj = Empty()
+#             obj.id = room.room_id
+#             obj.avg = math.floor(avg)
+#             obj.room = room
+#             obj.count = reviewcount
+#             data.append(obj)
+#         for i in data:
+#             print(i.id)
+#             print(i.avg)
+#         return render(request,'roomlistview.html',{'rooms': data})
+
+
 @login_required
 def roomlistview(request):
     if request.method == "POST":
         place  = request.POST['place']
-        rooms = Room.objects.all()
+        place = place.strip()
+        place = place.upper()
+        rooms = Room.objects.filter(city = place).values()  
+        return render(request,'roomlistview.html',{'rooms' : rooms, 'city': place})
 
-        class Empty:
-            id =0
-            room =0
-            avg = 0
-            count=0
-
-        data =[]
-        if rooms:
-            print("ntho ind akath")
-        for room in rooms:
-            avg = 0
-            reviewcount = Review.objects.filter(room=room.room_id).count()
-            ratings = Review.objects.filter(room=room.room_id)
-            norating =0
-            for rating in ratings:
-                norating += rating.rating
-            if reviewcount != 0:
-                avg=norating/reviewcount
-            obj= Empty()
-            obj.id = room.room_id
-            obj.avg = math.floor(avg)
-            obj.room = room
-            obj.count = reviewcount
-            data.append(obj)
-        for i in data:
-            print(i.id)
-            print(i.avg)
-        return render(request,'roomlistview.html',{'rooms' : data,
-
-
-                                                   })
-    if request.method == "GET":
-        rooms = Room.objects.all()
-
-        class Empty:
-            id = 0
-            room = 0
-            avg = 0
-            count = 0
-
-        data = []
-        if rooms:
-            print("ntho ind akath")
-        for room in rooms:
-            avg = 0
-            reviewcount = Review.objects.filter(room=room.room_id).count()
-            ratings = Review.objects.filter(room=room.room_id)
-            norating = 0
-            for rating in ratings:
-                norating += rating.rating
-            if reviewcount != 0:
-                avg = norating / reviewcount
-            obj = Empty()
-            obj.id = room.room_id
-            obj.avg = math.floor(avg)
-            obj.room = room
-            obj.count = reviewcount
-            data.append(obj)
-        for i in data:
-            print(i.id)
-            print(i.avg)
-        return render(request,'roomlistview.html',{'rooms': data})
 @login_required
 def AddRoom(request):
     if request.method =="POST":
@@ -119,10 +132,16 @@ def AddRoom(request):
     #   photo = request.FILES.get('photo', False)
         photo = request.FILES['upload']
         zipcode= request.POST['zipcode']
-        print(user, type, city, state, price ,photo )
-
+        city = city.strip()
+        price = price.strip()
+        zipcode = zipcode.strip()
+        state = state.strip()
+        city = city.upper()
+        state = state.upper()
         Room(user=user,type=type,photo=photo,price=price,city=city,state=state,Zipcode=zipcode).save();
         return HttpResponse("something happened at there..")
+
+
 @login_required
 def dashboard(request):
     if request.method == "GET":
@@ -138,3 +157,29 @@ def room_detail(request,rid):
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+def ajax_getCity(request):
+    if request.is_ajax():
+        search_text = request.GET.get('term', '')
+        search_text = search_text.upper()
+        rooms = Room.objects.filter(city__icontains = search_text)
+        results = []
+        for room in rooms:
+            city = room.city
+            city = city.title()
+            city_json = {}
+            city_json['label'] = city
+            city_json['value'] = city
+            try:
+                index = results.index(city_json)
+            except ValueError:
+                index = -1
+
+            if index == -1:
+                results.append(city_json)
+        data = json.dumps(results)
+        
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)

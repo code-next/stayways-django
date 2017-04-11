@@ -11,4 +11,5 @@ urlpatterns=[
     url(r'^dashboard',views.dashboard),
     url(r'^room/(?P<rid>[0-9]+)/$', views.room_detail),
     url(r'^logout/$',views.logout_view),
+    url(r'^ajax/get_city/$',views.ajax_getCity,name="ajax_getCity"),
 ]
