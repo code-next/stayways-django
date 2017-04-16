@@ -1,4 +1,38 @@
-(function() {
+(function($) {
+
+//fixed nav
+  var slideHeight = $(window).height();
+
+  $(window).on('scroll', function(){
+      if( $(window).scrollTop()>slideHeight ){
+        $('.pointing.menu').addClass('fixed');
+      } else {
+        $('.pointing.menu').removeClass('fixed');
+      }
+    });
+//pushing active nav
+$(window).scroll(function(event) {
+		Scroll();
+	});
+
+function Scroll() {
+		var contentTop      =   [];
+		var contentBottom   =   [];
+		var winTop      =   $(window).scrollTop();
+		var rangeTop    =   200;
+		var rangeBottom =   500;
+		$('.pointing.menu').find('.item').each(function(){
+			contentTop.push( $( $(this).attr('href') ).offset().top);
+			contentBottom.push( $( $(this).attr('href') ).offset().top + $( $(this).attr('href') ).height() );
+		})
+		$.each( contentTop, function(i){
+			if ( winTop > contentTop[i] - rangeTop ){
+				$('.pointing.menu .item')
+				.removeClass('active')
+				.eq(i).addClass('active');			
+			}
+		})
+	};
 
 
 
@@ -24,14 +58,21 @@ $('#tohash').on('click', function() {
 
 
 
+// wow animation
+new WOW().init();
+
+
 
 })(jQuery)
 
-// index page effects
+// reveiw adder
+
+$("#reviewformview").click(function(){
+    $("#reviewform").show();
+});
 
 
-
-
+	
 
 
 

@@ -130,8 +130,8 @@ p {
 /*   layout page styles    */
 .navigation{ 
     width:130%  !important;
-   height: 40px !important;
-   margin-top: -14px !important;
+    height: 40px !important;
+    margin-top: -14px !important;
     margin-bottom: -26px !important;
     margin-right: -5px !important;
    
@@ -400,13 +400,14 @@ p {
 .detail .detail_cover {
 
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .1);
-    background: url("../images/cover.webp") no-repeat center top;
+    background: url("../images/cover.jpg") no-repeat center top;
     margin-top: -10px;
     padding-top: 20px;
     text-align: center;
     background-attachment: fixed;
     background-position: center center;
     min-height: 500px;
+    max-height: 500px;
     width: 100%;
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
@@ -424,15 +425,18 @@ p {
     margin: -2px;
 }
 .detail .menu{
-    width:80%;
-    margin:0px 10% 0px 10% !important;
+    background-color: white !important;
+    width:100%;
+    margin:0px 0px 0px 0px !important;
 }
 .detail .menu .item{
     font-size: 18px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 400;
     color: dimgray;    
-
+}
+#overview1{
+    margin-left: 10%;
 }
 
 .overview .title{
@@ -462,11 +466,14 @@ p {
 .overview .gaptitle{
    padding:5px 0px 0px 0px !important;
 }
-.overview .avatarimg{
-    margin-top:40px !important;
-}
+
 .overview .avatarname{
     margin-top:5px !important;
+    font-weight: 300;
+    color: #333;
+}
+.overview .avatarimg{
+    margin-top:-5px !important;
 }
 .overview .avatarcolumn{
     width:100%;
@@ -476,7 +483,285 @@ p {
     font-size: 16px;
 }
 .overview .typeIcons{
-    margin-left: 10%;
-    width:50% !important;
+    
+    margin-left: -20px !important;
+    width:93% !important;
     text-align: center;
+}
+.overview .line{
+    margin-left: -30px !important;
+    width:93% !important;
+}
+.overview .typeIcons p{
+    text-align: justify;
+}
+.overview .typeIcons .subhead{
+    font-size: 25px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 300%;
+    
+}
+.overview .icon{
+    color: #767676;
+    float: right;
+}
+.overview .icon:hover{
+    color: #6435C9;
+}
+.overview .typeIcons .secheader{
+    font-size: 18px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 200%;
+}
+.overview .amenitygrid{
+    width:100% !important;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 300;
+    color: #333;  
+    text-align: left;
+}
+
+/*sticky card*/
+
+.stickycard .rail{
+    margin-left: -30px !important;
+}
+.stickycard .raised.segment{
+    width:80% !important;
+}
+
+.stickycard .raised.segment .pricediv{
+    
+    height:200px;
+    margin:-14px -0px 0px -14px;
+    width:113%;
+    color:white !important;
+    /*background-color:#00B16A;*/
+    background-color:#34495e;
+}
+.pricediv .pricehead{
+
+    text-align:center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    color:white !important;
+}
+.pricediv .pricetag{
+    font-size: 60px;
+    margin-top:-8px !important;
+    padding:0px !important;
+    text-align:center;
+}
+.pricediv .pricesign{
+    font-size: 18px;
+    margin:0px 10px 0px 0px;
+}
+.pricediv .pricesignrow{
+    margin-top:34px !important;
+    padding:0px !important;
+    text-align:right;
+}
+.pricedetails .detailtext{
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    color: #767676 !important;  
+    line-height: 130%  
+}
+.pricedetails .bold{
+    line-height: 170% !important;  
+    font-weight: 500;
+      
+}
+.reviews{
+    width:100%;
+}
+.reviews .segment{
+    width:106%;
+}
+.reviews .reviewheader{
+    margin-left: 20px;
+    text-align:left;
+}
+.reviewheader .grid{
+    padding:0px !important;
+    width:100% !important;
+    margin:-50px 0px 0px 70px !important;
+}
+.reviewheader .grid .row{
+    /*padding:0px !important;*/
+    padding-top:7px;
+    padding-bottom:0px;
+
+}
+.reviewheader .reviewperson{
+    font-size: 18px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    color: #333; 
+}
+.reviewheader .reviewdate{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    margin-left: 10px;
+    color: #767676; 
+}
+.reviews .divider{
+    margin:-10px 0px 0px 20px !important;
+}
+.reviews p{
+    margin: -12px 0px 0px 15px !important;
+}
+.reviews .fifteen.wide.column{
+    padding-right: 40px;
+}
+.addreview{
+    width:100%;
+    text-align: left;
+}
+.addreview .form{
+    margin-left: 30px;
+}
+.addreview .button{
+    float:right;
+}
+.reviewaddicon{
+    text-align: right;
+    width: 100%;
+    margin-left: 70px;
+    margin-top:-25px;
+}
+
+#reviewform{
+    display: none;
+}
+
+#reviewformview{
+    width:10px;
+    height: 20px;
+    cursor: pointer;
+    cursor: hand;
+}
+.host{
+    width:100% !important;
+    text-align: left;
+}
+.host .sixteen.wide.column{
+    margin-top:-50px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px !important;
+    color: #767676; 
+    line-height: 200%;
+}
+.host .layer{
+    padding-bottom:30px !important;
+}
+.host img{
+    margin-top:14px;
+}
+.portfolio{
+   text-align: center;
+    width:100%;
+    padding: 20px 0px 0px 0px !important;
+    
+}
+.portfolio .column{
+    padding:0px !important;
+    height: 300px !important;
+    overflow: hidden;
+}
+.portfolio img{
+    margin-bottom: -4px;
+    width:100% !important;
+    height: 100% !important;
+}
+.portfoliotitile{
+    font-size: 25px;
+    font-family: Raleway;
+    font-weight: 300;
+    color: #333;
+}
+.portfoliohead{
+   text-align: center;
+    width:100%;
+    padding: 80px 0px 0px 0px !important;
+    
+}
+
+/*overlay settings*/
+
+.view-tenth img {
+   -webkit-transition: all 0.8s ease-in-out;
+   transition: all 0.8s ease-in-out;
+}
+
+.view-tenth:hover img {
+   -webkit-transform: scale(1.5) rotate(-15deg);
+  transform: scale(1.5) rotate(-15deg);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background-color: black;
+  opacity: .70;
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.content {
+  white-space: nowrap; 
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  width:100%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.view-tenth:hover .overlay {
+  height: 100%;
+
+}
+
+.content a {
+  font-size: 18px;
+  color: #333;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: inline-block;
+  margin-top: 20px;
+  margin-right: 5px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.content .expand {
+  margin-top: -500px;
+  margin-left: -500px;
+   -webkit-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+
+.view-tenth:hover .content .expand {
+  margin-top: 0;
+  margin-left:0;
+}
+.content a:hover{
+    background-color: #6435C9;
+    color: white;
+    opacity: 5.5;
+}
+.content .icon{
+    margin-left:7px;
+    margin-top:-2px;
 }

@@ -6,8 +6,7 @@ $(document).ready(function(){
         $(this).addClass('active');
     });   
 
-// model
-     $('#signup')
+ $('#signup')
         .modal('hide');
 
     $('#sign').click(function () {
@@ -31,9 +30,6 @@ $(document).ready(function(){
             .modal({ backdrop: 'static', keyboard: false });
     });
 
-    $('.special.cards .image').dimmer({
-        on: 'hover'
-    });
 
 // rating
     $('.ui.rating')
@@ -41,6 +37,16 @@ $(document).ready(function(){
     initialRating: 0,
     maxRating: 5
   }).rating('disable');
+
+  $('.form .rating').rating('enable');
+// sticky card
+  $('.ui.sticky')
+  .sticky({
+    context: '#roomOverview',
+    offset       : 100,
+    bottomOffset : 100,
+    pushing: true
+  });
 
 
 });

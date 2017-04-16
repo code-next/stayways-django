@@ -6,17 +6,16 @@
     <meta name="viewport" content="width=device-width">
     <title>Stayways | Finding a long termrental accommodation made easy</title>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}">
     <link href="{% static 'css/font.css' %}" rel="stylesheet">
-    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.css' %} ">
     <link rel="stylesheet" type="text/css" href="{% static 'css/partical-animation.css' %} ">
     <link rel="stylesheet" type="text/css" href="{% static 'css/semantic.min.css' %}">
     <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/jquery-ui.js' %}"></script>
-    <script src="{% static 'js/semantic.min.js' %}"></script>
-    <script src="{% static 'js/ajax.js' %}"></script>   
+    
+    
+   
 </head>
 
 <body>
@@ -101,19 +100,6 @@
 
     <!--footer -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!--signupmodal -->
 
     <div class="ui small modal " id="signup">
@@ -140,22 +126,6 @@
                     <input type="password" name="password">
                 </div> 
                 
-        {% comment %}{% for field in form|slice:"2:" %}
-            {% if forloop.counter >= 3  %}
-                <div class="required field">
-                    <label>{{ field.label_tag }}</label>
-                    <span>{{ field.errors }}</span> {{ field }}
-                </div>
-            {% endif %}
-        {% endfor %}
-        <div class="required field">
-            <div class="ui  checkbox">
-                <input type="checkbox" name="terms">
-                <label>I agree to the Terms and Conditions</label>
-            </div>
-        </div>{% endcomment %}
-
-
     </div>
     <div class="actions">
         <button type="submit" class="ui green button" id="register">Register</button>
@@ -189,9 +159,17 @@
     </div>
     <!-- login model ends here -->
 
-<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/semantic.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+<script src="{% static 'js/semanticCustomjs.js' %}"></script>
+<script src="{% static 'js/ajax.js' %}"></script>   
 <script src="{% static 'js/particles.min.js' %}"></script>
 <script src="{% static 'js/partical-animation.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/smoothscroll.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
 </body>
 
 

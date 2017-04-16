@@ -2,18 +2,20 @@
 <!Doctype html>
 <html>
 <head>
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}">
     <link href="{% static 'css/font.css' %}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/semantic.min.css' %}">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <script src="{% static 'js/jquery.js' %}"></script>
+    <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lightbox.css' %}" rel="stylesheet">
+    
     <title>{% block title %}{% endblock %}</title>
-    <script src="{% static 'js/semanticCustomjs.js' %}"></script>
-    {% block head %}{% endblock %}
+    
 </head>
 <body>
     <div class="ui grid mainLayer">
         <div class="row gridrow">
-            <div class="ui violet inverted secondary  navigation menu">
+            <div class="ui violet inverted secondary navigation menu">
                 <a href="{% url 'main:index' %}" class="header"><div>stayways</div></a>
                 <div class="right menu rightMenu">
                     <a class="item menuItem"><i aria-hidden="true" class="empty heart inverted icon"></i></a>
@@ -28,8 +30,16 @@
     {% block content %}
     {% endblock %}
     
-    
+    <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/semantic.min.js' %}"></script>
+    <script src="{% static 'js/semanticCustomjs.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/smoothscroll.js' %}"></script>
+    <script src="{% static 'js/lightbox.min.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
+    
+    {% block javascript %}
+    {% endblock %}
+    
 </body>
 </html>

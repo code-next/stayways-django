@@ -1,92 +1,527 @@
 {% extends "layout.html" %}
 {% load static from staticfiles %}
 {% block content %}
-    <div class="ui grid detail">
+    <div class="ui grid detail" id="detailfow">
         <div class="row cover_row">
             <div class="sixteen wide column detail_cover">
+                
             </div>
         </div>
-        <div class="row">
-            <div class="ui pink secondary pointing menu" id="detail_menu">
-                <a class="item active">
+        <div class="row" id="sy_overview">
+            <div class="ui fluid pink secondary pointing menu" id="detail_menu">
+                <a class="item active" id="overview1" href="#sy_overview">
                     Overview
                 </a>
-                <a class="item">
+                <a class="item" href="#sy_reviews">
                     Reviews
                 </a>
-                <a class="item">
+                <a class="item" href="#sy_thehost">
                    The Host
                 </a>
-                <a class="item">
-                   Location
+                <a class="item" href="#sy_portfolio">
+                   Portfolio
                 </a>
             </div>
           
         </div>
-        <div class="row overview">
-            <div class="two wide column"></div>
-            <div class="six wide column">
-                <div class="ui grid">
-                    <div class="row" style="height: 50px;"></div>
-                    <div class="row ">
-                        <span class="title">The Jaunt room II loherm is the dummy text used in the web devlopment</span>
+        <div class="row" id="roomOverview" >
+            <div class="ui grid" style="width:100%;margin: 0px;" >
+                <div class="row" style="margin:0px;">
+                    <div class="two wide column"></div>
+                    <div class="nine wide column" style="margin-left: -20px;">
+                        <div class="ui grid" style="width: 100%;margin: 0px;">
+        <!-- overview -->  
+        
+                            <div class="row overview" >
+                                <div class="eleven wide column">
+                                    <div class="ui grid">
+                                        <div class="row ">
+                                            <!-- room title -->
+                                            <span class="title ">The Jaunt room II loherm is the dummy text used in the web devlopment</span>
+                                        </div>
+                                        <div class="row gaptitle"></div>
+                                        <div class="row ">
+                                            <div class="sixteen wide column place_column">
+                                                <div style="float:left;margin-right: 20px;">
+                                                        <!-- room city and state -->
+                                                    <span class="place"> Ernakulam, Kerala, India</span>
+                                                </div>
+                                                <div>
+                                                    <div class="ui star rating" data-rating="3"></div>
+                                                        <!-- no.of Reviews -->
+                                                        <span class="place rv">5 Reviews</span>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="four wide column avatarcolumn">
+                                    <div class="avatarimg">
+                                            <img class="ui tiny avatar image" src="{% static 'images/profile.jpg' %}">
+                                    </div>
+                                    <!-- user's first name -->
+                                    <div class="avatarname">Paul</div> 
+                                </div>
+                            
+                                <div class="ui divider"></div>
+                            </div>
+                            <div class="row overview" style="margin-top:-10px;">
+                                <div class="ui divider line"></div>
+                                <div class="ui four column grid typeIcons">
+                                    <div class="row" style="margin:-6px 0px 0px -15px;">
+                                        <div class="column">
+                                            <i class="big lock icon"></i>
+                                            <!-- room type -->
+                                            <div class="avatarname">Private</div>
+                                        </div>
+                                        <div class="column">                      
+                                            <i class="big users icon"></i>
+                                            <!-- number of Guests -->
+                                            <div class="avatarname">1 Guest</div>
+                                        </div>
+                                        <div class="column">
+                                            <i class="big file icon"></i>
+                                            <!-- no.of bedrooms-->
+                                            <div class="avatarname">1 Bedroom</div>
+                                        </div>
+                                        <div class="column">
+                                            <i class="big bed icon"></i>
+                                            <!-- no.of beds-->
+                                            <div class="avatarname">1 Bed</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row overview">
+                                <div class="ui divider line" style="margin-top:-20px;"></div>
+                                <div class="ui four column grid typeIcons">
+                                    <div class="row" style="margin-top: -25px;">
+                                        <span class="subhead ">About this listing</span>
+                                        <p>
+                                            <!-- description -->
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row overview">
+                                <div class="ui divider line" style=" margin-top:-20px;"></div>
+                                <div class="ui four column grid typeIcons">
+                                    <div class="row" style="margin-top: -25px;">
+                                        <span class="secheader">Amenities</span>
+                                        <!-- Amenities-->
+                                        <div class="ui grid amenitygrid">
+                                            <div class="row">
+                                                <div class="three wide column"></div>
+                                                <div class="twelve wide column">
+                                                    <div class="ui two column grid amenitygrid" id="sy_reviews">
+                                                        <!-- item and it's icon -->
+                                                        <div class="column"><i class="large wifi icon"></i>Wireless Internet</div>
+                                                        <!-- item ends -->
+                                                        <!-- item -->
+                                                        <div class="column"><i class="large food icon"></i>Kitchen</div>
+                                                        <!-- item ends -->
+                                                        <!-- item -->
+                                                        <div class="column"><i class="large paw icon"></i>Pets allowed</div>
+                                                        <!-- item ends -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                    
+        <!-- overview ends -->
+        <!-- review section starts -->
+        
+                        <div class="row overview" >
+                            <div class="ui divider line" style="margin-top:-20px;"></div>
+                            <div class="ui four column grid typeIcons">
+                                <div class="row" style="margin-top: -25px;">
+                                    <span class="secheader">Reviews</span>
+                                    <div class="reviewaddicon">
+                                        
+                                        <i class="large add square icon" id="reviewformview" title="Add Review"></i>
+                                        
+                                    </div>
+                                    <div class="ui grid reviews">
+                                        <div class="row"></div>
+                                        <div class="row">
+                                            <div class="one wide column"></div>
+                                            <div class="fifteen wide column">
+                                                <!-- review adding section -->
+                                                    <div class="ui segment" id="reviewform">
+                                                            <div class="ui grid addreview">
+                                                                <div class="row">
+                                                                    <div class="sixteen wide column">
+                                                                            <div class="ui form">
+                                                                                <div class="field">
+                                                                                    <label>Rating</label>
+                                                                                    <div class="ui star rating" data-rating="0"></div>
+                                                                                </div>
+                                                                                <div class="field">
+                                                                                    <label>Text</label>
+                                                                                    <textarea></textarea>
+                                                                                </div>
+                                                                                <div class="field">
+                                                                                    <button class="ui button">finish</button>
+                                                                                </div>
+                                                                            </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    </div> 
+
+                                                <!-- review adding ends -->
+                                                <!--review starts -->
+                                                <div class="ui segment">
+                                                    <div class="ui grid reviews">
+                                                        <div class="row">
+                                                            <div class="sixteen wide column reviewheader">         
+                                                                    <img class="ui avatar image" src="{% static 'images/profile.jpg' %}" style="width:50px;height:50px;">
+                                                                    <div class="ui grid">
+                                                                        <!-- reviewed person's name -->
+                                                                        <div class="row"><span class="reviewperson">Shawn mendes</span></div>
+                                                                        <div class="row">
+                                                                            <div class="ui star rating" data-rating="3"></div>
+                                                                            <!-- review date -->
+                                                                            <span class="reviewdate">4/3/17</span>
+                                                                        </div>
+
+                                                                    </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="ui divider"></div>
+                                                        <div class="row">
+                                                            <div class="sixteen wide column">
+                                                                <!-- review description -->
+                                                                <p>
+                                                                    text used in the web devlopment.
+                                                                    lohrem is the dummy text used in the web devlopment.
+                                                                    lohrem is the dummy text used in the web devlopment.
+                                                                    lohrem is the dummy text used in the web devlopment.
+                                                                    lohrem is the dummy text used in the web devlopment.
+                                                                </p>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <!-- review ends-->
+                                                <!--review starts -->
+                                                <div class="ui segment">
+                                                    <div class="ui grid reviews">
+                                                        <div class="row">
+                                                            <div class="sixteen wide column reviewheader">  
+                                                                    <!-- profile pic of reviewed person -->       
+                                                                    <img class="ui avatar image" src="{% static 'images/profile.jpg' %}" style="width:50px;height:50px;">
+                                                                    <div class="ui grid">
+                                                                        <!-- reviewed person's name -->
+                                                                        <div class="row"><span class="reviewperson">Charlie puth</span></div>
+                                                                        <div class="row">
+                                                                            <div class="ui star rating" data-rating="3"></div>
+                                                                            <!-- review date -->
+                                                                            <span class="reviewdate">4/3/17</span>
+                                                                        </div>
+
+                                                                    </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="ui divider"></div>
+                                                        <div class="row">
+                                                            <div class="sixteen wide column">
+                                                                <!-- review description -->
+                                                                <p>
+                                                                    text used in the web devlopment.
+                                                                    lohrem is the dummy text used in the web devlopment.
+                                                                    lohrem is the dummy text used in the web devlopment.
+                                                                </p>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <!-- review ends-->
+                                               
+                                               
+                                            </div>
+                                        </div>
+                                    </div>  
+
+                                </div>
+                             </div>
+                        </div>
+
+        <!-- review section ends --> 
+        <!-- the host-->
+                    <div class="row overview" id="sy_thehost">
+                            <div class="ui divider line" style="margin-top:-20px;"></div>
+                            <div class="ui four column grid typeIcons">
+                                <div class="row" style="margin-top: -25px;">
+
+                                    <div class="ui grid host">
+                                        <div class="row">
+                                            <div class="fourteen wide column">
+                                                <span class="subhead">Hosted by Paul</span>
+                                            </div>
+                                            <div class="two wide column">
+                                                    <img class="ui tiny avatar image" src="{% static 'images/profile.jpg' %}">
+                                            </div>
+                                        </div>
+                                        <div class="row layer">
+                                            <div class="sixteen wide column">
+                                                <span >Ernakulam,kerala,india</span>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>                                    
+                                    
+                                    <p>
+                                            <!-- description -->
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                            lohrem is the dummy text used in the web devlopment.
+                                    </p>
+                                </div>
+                            </div>
+
                     </div>
-                    <div class="row gaptitle"></div>
-                    <div class="row ">
-                        <div class="sixteen wide column place_column">
-                            <div style="float:left;margin-right: 20px;">
-                           <span class="place"> Ernakulam, Kerala, India</span></div>
-                           <div >
-                               <div class="ui star rating" data-rating="3"></div>
-                                <span class="place rv">5 Reviews</span>
+         <!-- the host ends-->
+
+                        </div>
+                    </div>
+                    <div class="four wide column stickycard">
+        <!-- sticky card -->
+                        <div class="ui internal rail">
+                            <div class="ui sticky" id="pricetag">
+                            <div class="ui raised segment">
+                                <div class="pricediv">
+                                    <div class="ui grid">
+                                        <div class="row">
+                                            <div class="column pricehead">
+                                          <!-- room type -->      
+                                                <span>PRIVATE ROOM</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row pricesignrow">
+                                            <div class="four wide column">
+                                                <span class="pricesign">₹ </span>
+                                            </div> 
+                                        </div>
+                                        
+                                        <div class="row pricetag">
+                                            <div class="one wide column"></div>
+                                            <div class="eleven wide column" style="padding-right:0px;">
+                                            <!-- total room price including service-->    
+                                                <span>1776</span>
+                                            </div> 
+                                            <div class="one wide column" style="padding:0px;">
+                                                <span class="pricesign">/mo</span>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricedetails" >
+                                    <div class="ui grid">
+                                        <div class="row"></div>
+                                        <div class="row">
+                                           
+                                               
+                                                    <div class="seven wide column" style="text-align:right;padding-right:0px;">
+                                                        <div><span class="detailtext">monthly</span></div>
+                                                        <div><span class="detailtext">service </span></div>
+                                                        <div><span class="detailtext bold">Total   </span></div>
+                                                    </div>
+                                                    <div class="seven wide column" style="text-align:left;">
+                                                        <!-- monthly charge -->
+                                                        <div><span class="detailtext">₹ 1000</span></div>
+                                                        <!-- service charge -->
+                                                        <div><span class="detailtext">₹ 776</span></div>
+                                                        <!-- total price -->
+                                                        <div><span class="detailtext bold">₹ 1776</span></div>
+                                                    </div>
+                                                    <div class="column" style="text-align:right;margin-left:-20px;padding-left:0px;">
+                                                        <span class="detailtext"><i class="green checkmark icon"></i></span>
+                                                        <span class="detailtext"><i class="green checkmark icon"></i></span>
+                                                        <span class="detailtext bold"><i class="green checkmark icon"></i></span>
+                                                    </div>
+                                          
+                                                    
+                                         
+                                        </div>
+                                        <div class="row">
+                                            <div class="column" style="text-align:center;">
+                                                <button class="ui violet button">Request to Book</button>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                         </div>
-                        {% comment %}<div class="seven wide column ">
-                            
-                        </div>{% endcomment %}
+        <!-- sticky card ends -->
                     </div>
                 </div>
             </div>
-            <div class="two wide column avatarcolumn">
-                <div class="avatarimg">
-                        <img class="ui tiny avatar image" src="{% static 'images/profile.jpg' %}">
-                </div>
-                <div class="avatarname">Paul</div> 
-            </div>
-            <div class="ui divider"></div>
         </div>
-        <div class="row overview" style="margin-top:-10px;">
-            <div class="ui divider" style="width:50%;margin-left:10%;"></div>
-            <div class="ui four column grid typeIcons">
-                <div class="row" style="margin-top:-6px;">
+      <!-- portfolio -->  
+        <div class="row" id="sy_portfolio">
+            <div class="ui grid portfoliohead">
+                <div class="row">
                     <div class="column">
+                        <span class="portfoliotitile">PORTFOLIO</span>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class="row">       
+            <div class="ui four column grid portfolio">
+                <div class="row">
+                        <!-- image starts -->
+                        <div class="column view-tenth">
+                            <img src="/media/mountains.jpg"/>
+                            <div class="overlay">
+                                <div class="content">
+                                    <span class="expand">
+                                        <a href="/media/mountains.jpg" data-lightbox="portfolio">
+                                            <i class=" large zoom icon"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--image ends -->
+                        <!-- image starts -->
+                        <div class="column view-tenth">
+                            <img src="/media/adStayways.jpg"/>
+                            <div class="overlay">
+                                <div class="content">
+                                    <span class="expand">
+                                        <a href="/media/adStayways.jpg" data-lightbox="portfolio">
+                                            <i class=" large zoom icon"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--image ends -->
+                        <!-- image starts -->
+                        <div class="column view-tenth">
+                            <img src="/media/room.jpg"/>
+                            <div class="overlay">
+                                <div class="content">
+                                    <span class="expand">
+                                        <a href="/media/room.jpg" data-lightbox="portfolio">
+                                            <i class=" large zoom icon"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--image ends -->
+                        <!-- image starts -->
+                        <div class="column view-tenth">
+                            <img src="/media/mountains.jpg"/>
+                            <div class="overlay">
+                                <div class="content">
+                                    <span class="expand">
+                                        <a href="/media/mountains.jpg" data-lightbox="portfolio">
+                                            <i class=" large zoom icon"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--image ends -->
+                        <!-- image starts -->
+                        <div class="column view-tenth">
+                            <img src="/media/adStayways.jpg"/>
+                            <div class="overlay">
+                                <div class="content">
+                                    <span class="expand">
+                                        <a href="/media/adStayways.jpg" data-lightbox="portfolio">
+                                            <i class=" large zoom icon"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--image ends -->
+                        <!-- image starts -->
+                        <div class="column view-tenth">
+                            <img src="/media/room.jpg"/>
+                            <div class="overlay">
+                                <div class="content">
+                                    <span class="expand">
+                                        <a href="/media/room.jpg" data-lightbox="portfolio">
+                                            <i class=" large zoom icon"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--image ends -->
+                        <!-- image starts -->
+                        <div class="column view-tenth">
+                            <img src="/media/mountains.jpg"/>
+                            <div class="overlay">
+                                <div class="content">
+                                    <span class="expand">
+                                        <a href="/media/mountains.jpg" data-lightbox="portfolio">
+                                            <i class=" large zoom icon"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--image ends -->
+                        <!-- image starts -->
+                        <div class="column view-tenth">
+                            <img src="/media/room.jpg"/>
+                            <div class="overlay">
+                                <div class="content">
+                                    <span class="expand">
+                                        <a href="/media/room.jpg" data-lightbox="portfolio">
+                                            <i class=" large zoom icon"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--image ends -->
                         
-                        <i class="big grey lock icon"></i>
-                        <div class="avatarname">Private</div>
-                    </div>
-                    <div class="column">
-                        
-                        <i class="big grey users icon"></i>
-                    
-                        <div class="avatarname">1 Guest</div>
-                    </div>
-                    <div class="column">
-                        <i class="big grey file icon"></i>
-                        <div class="avatarname">1 Bedroom</div>
-                    </div>
-                    <div class="column">
-                        <i class="big grey archive icon"></i>
-                        <div class="avatarname">1 Bed</div>
-                    </div>
-
                 </div>
             </div>
         </div>
-        <div class="row overview">
-            <div class="ui divider" style="width:50%;margin-left:10%; margin-top:-20px;"></div>
-        </div>
-        <div class="row overview" style="height: 400px;">
-
-        </div>
+          
+        
+        
     </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+new WOW().init();
+</script>
 {% endblock %}
