@@ -712,7 +712,7 @@ p {
   transition: all 0.5s ease-in-out;
 }
 
-.ovcontent {
+.ovlycontent {
   white-space: nowrap; 
   color: white;
   font-size: 20px;
@@ -729,7 +729,7 @@ p {
 
 }
 
-.ovcontent a {
+.ovlycontent a {
   font-size: 18px;
   color: #333;
   height: 50px;
@@ -744,23 +744,23 @@ p {
   transition: all 0.2s ease-in-out;
 }
 
-.ovcontent .expand {
+.ovlycontent .expand {
   margin-top: -500px;
   margin-left: -500px;
    -webkit-transition: all 0.6s ease-in-out;
   transition: all 0.6s ease-in-out;
 }
 
-.view-tenth:hover .ovcontent .expand {
+.view-tenth:hover .ovlycontent .expand {
   margin-top: 0;
   margin-left:0;
 }
-.ovcontent a:hover{
+.ovlycontent a:hover{
     background-color: #6435C9;
     color: white;
     opacity: 5.5;
 }
-.ovcontent .icon{
+.ovlycontent .icon{
     margin-left:7px;
     margin-top:-2px;
 }
