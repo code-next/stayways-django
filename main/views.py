@@ -16,8 +16,10 @@ def signup(request):
     if request.method =="POST":
         username = request.POST['username']
         password = request.POST['password']
+        first_name = request.POST['firstname']
+        last_name = request.POST['lastname']
         print(username + password)
-        User.objects.create_user(username,username, password)
+        User.objects.create_user(username,username, password,first_name=first_name,last_name=last_name)
         user = authenticate(username=username, password=password)
 
         if user is not None:
@@ -111,6 +113,25 @@ def signin(request):
 #             print(i.avg)
 #         return render(request,'roomlistview.html',{'rooms': data})
 
+def AddReview(request):
+    if request.method == "POST":
+        rating = request.POST['rating']
+        review = request.POST['review']
+        room = Room.objects.get(room_id=2)
+        r = Review(review=review,rating=rating,user=request.user,room=room)
+        r.save()
+        reviews = Review.objects.filter(room=room)
+        count =reviews.count()
+        sum=0
+        avg =0
+        for r in reviews:
+            sum += r.rating
+        if count !=0:
+            avg = sum/count
+
+        room.avgrating = avg
+        room.save()
+        return redirect("/dashboard")
 
 
 def roomlistview(request):
@@ -138,6 +159,7 @@ def AddRoom(request):
         state = state.strip()
         city = city.upper()
         state = state.upper()
+
         Room(user=user,type=type,photo=photo,price=price,city=city,state=state,Zipcode=zipcode).save();
         return HttpResponse("something happened at there..")
 
@@ -149,8 +171,12 @@ def dashboard(request):
         
 def room_detail(request,rid):
     room = Room.objects.get(room_id=rid)
+    reviews = Review.objects.filter(room=rid)
+    rcount = reviews.count()
     return render(request,'detail.html',{
-        'room' : room
+        'room' : room,
+        'reviews' :reviews,
+        'count' :rcount
     })
 
 @login_required

@@ -55,6 +55,26 @@
 
                     <button class="ui button" type="submit">Submit</button>
                     </form>
+
+
+
+            <form class="ui form" action="/addreview/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+
+                    <div class="required field">
+                            <div class="required field">
+                                <label>Rating</label>
+                                <input type="text" required name="rating" placeholder="3">
+                            </div>
+                            <div class="required field">
+                                <label>Review</label>
+                                <input type="text" required name="review" placeholder="Add something">
+                            </div>
+                    </div>
+
+                    <button class="ui button" type="submit">Submit</button>
+                    </form>
     <!-- add room form -->
     </div>
     </div>

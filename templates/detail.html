@@ -43,12 +43,12 @@
                                             <div class="sixteen wide column place_column">
                                                 <div style="float:left;margin-right: 20px;">
                                                         <!-- room city and state -->
-                                                    <span class="place"> Ernakulam, Kerala, India</span>
+                                                    <span class="place">{{ room.city }},{{room.state}},</span>
                                                 </div>
                                                 <div>
-                                                    <div class="ui star rating" data-rating="3"></div>
+                                                    <div class="ui star rating" data-rating="{{ room.avgrating }}"></div>
                                                         <!-- no.of Reviews -->
-                                                        <span class="place rv">5 Reviews</span>
+                                                        <span class="place rv">{{ count }} Reviews</span>
                                                 </div>
                                             </div>
                                             
@@ -60,7 +60,7 @@
                                             <img class="ui tiny avatar image" src="{% static 'images/profile.jpg' %}">
                                     </div>
                                     <!-- user's first name -->
-                                    <div class="avatarname">Paul</div> 
+                                    <div class="avatarname">{{ room.user.first_name }} {{ room.user.last_name }}</div>
                                 </div>
                             
                                 <div class="ui divider"></div>
@@ -72,7 +72,7 @@
                                         <div class="column">
                                             <i class="big lock icon"></i>
                                             <!-- room type -->
-                                            <div class="avatarname">Private</div>
+                                            <div class="avatarname">{{ room.type }}</div>
                                         </div>
                                         <div class="column">                      
                                             <i class="big users icon"></i>
@@ -185,6 +185,7 @@
 
                                                 <!-- review adding ends -->
                                                 <!--review starts -->
+                                                {% for review in reviews %}
                                                 <div class="ui segment">
                                                     <div class="ui grid reviews">
                                                         <div class="row">
@@ -192,11 +193,11 @@
                                                                     <img class="ui avatar image" src="{% static 'images/profile.jpg' %}" style="width:50px;height:50px;">
                                                                     <div class="ui grid">
                                                                         <!-- reviewed person's name -->
-                                                                        <div class="row"><span class="reviewperson">Shawn mendes</span></div>
+                                                                        <div class="row"><span class="reviewperson">{{ review.user.first_name}} {{ review.user.last_name }}</span></div>
                                                                         <div class="row">
-                                                                            <div class="ui star rating" data-rating="3"></div>
+                                                                            <div class="ui star rating" data-rating="{{ review.rating }}"></div>
                                                                             <!-- review date -->
-                                                                            <span class="reviewdate">4/3/17</span>
+                                                                            <span class="reviewdate">{{ review.date }}</span>
                                                                         </div>
 
                                                                     </div>
@@ -208,17 +209,14 @@
                                                             <div class="sixteen wide column">
                                                                 <!-- review description -->
                                                                 <p>
-                                                                    text used in the web devlopment.
-                                                                    lohrem is the dummy text used in the web devlopment.
-                                                                    lohrem is the dummy text used in the web devlopment.
-                                                                    lohrem is the dummy text used in the web devlopment.
-                                                                    lohrem is the dummy text used in the web devlopment.
+                                                                    {{ review.review }}
                                                                 </p>
                                                             </div>
                                                             
                                                         </div>
                                                     </div>
-                                                </div> 
+                                                </div>
+                                                {% endfor %}
                                                 <!-- review ends-->
                                                 <!--review starts -->
                                                 <div class="ui segment">
@@ -275,7 +273,7 @@
                                     <div class="ui grid host">
                                         <div class="row">
                                             <div class="fourteen wide column">
-                                                <span class="subhead">Hosted by Paul</span>
+                                                <span class="subhead">Hosted by {{ room.user }}</span>
                                             </div>
                                             <div class="two wide column">
                                                     <img class="ui tiny avatar image" src="{% static 'images/profile.jpg' %}">
@@ -332,7 +330,7 @@
                                             <div class="one wide column"></div>
                                             <div class="eleven wide column" style="padding-right:0px;">
                                             <!-- total room price including service-->    
-                                                <span>1776</span>
+                                                <span>{{ room.price }}</span>
                                             </div> 
                                             <div class="one wide column" style="padding:0px;">
                                                 <span class="pricesign">/mo</span>
@@ -353,11 +351,11 @@
                                                     </div>
                                                     <div class="seven wide column" style="text-align:left;">
                                                         <!-- monthly charge -->
-                                                        <div><span class="detailtext">₹ 1000</span></div>
+                                                        <div><span class="detailtext">₹ {{ room.price|add:-776 }}</span></div>
                                                         <!-- service charge -->
                                                         <div><span class="detailtext">₹ 776</span></div>
                                                         <!-- total price -->
-                                                        <div><span class="detailtext bold">₹ 1776</span></div>
+                                                        <div><span class="detailtext bold">₹ {{ room.price }}</span></div>
                                                     </div>
                                                     <div class="column" style="text-align:right;margin-left:-20px;padding-left:0px;">
                                                         <span class="detailtext"><i class="green checkmark icon"></i></span>
