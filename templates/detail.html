@@ -36,14 +36,14 @@
                                     <div class="ui grid">
                                         <div class="row ">
                                             <!-- room title -->
-                                            <span class="title ">The Jaunt room II loherm is the dummy text used in the web devlopment</span>
+                                            <span class="title ">{{ room.title }}</span>
                                         </div>
                                         <div class="row gaptitle"></div>
                                         <div class="row ">
                                             <div class="sixteen wide column place_column">
                                                 <div style="float:left;margin-right: 20px;">
                                                         <!-- room city and state -->
-                                                    <span class="place">{{ room.city }},{{room.state}},</span>
+                                                    <span class="place">{{ room.city|title }},{{room.state|lower}}</span>
                                                 </div>
                                                 <div>
                                                     <div class="ui star rating" data-rating="{{ room.avgrating }}"></div>
@@ -57,10 +57,10 @@
                                 </div>
                                 <div class="four wide column avatarcolumn">
                                     <div class="avatarimg">
-                                            <img class="ui tiny avatar image" src="{% static 'images/profile.jpg' %}">
+                                            <img class="ui tiny avatar image" src="/media/{{ host.image}}">
                                     </div>
                                     <!-- user's first name -->
-                                    <div class="avatarname">{{ room.user.first_name }} {{ room.user.last_name }}</div>
+                                    <div class="avatarname">{{ host.first_name }} {{ host.last_name }}</div>
                                 </div>
                             
                                 <div class="ui divider"></div>
@@ -72,22 +72,22 @@
                                         <div class="column">
                                             <i class="big lock icon"></i>
                                             <!-- room type -->
-                                            <div class="avatarname">{{ room.type }}</div>
+                                            <div class="avatarname">{{ room.type|title }}</div>
                                         </div>
                                         <div class="column">                      
                                             <i class="big users icon"></i>
                                             <!-- number of Guests -->
-                                            <div class="avatarname">1 Guest</div>
+                                            <div class="avatarname">{{ room.guest }} Guest</div>
                                         </div>
                                         <div class="column">
                                             <i class="big file icon"></i>
                                             <!-- no.of bedrooms-->
-                                            <div class="avatarname">1 Bedroom</div>
+                                            <div class="avatarname">{{ room.no_bedrooms }} Bedroom</div>
                                         </div>
                                         <div class="column">
                                             <i class="big bed icon"></i>
                                             <!-- no.of beds-->
-                                            <div class="avatarname">1 Bed</div>
+                                            <div class="avatarname">{{ room.no_beds }} Bed</div>
                                         </div>
                                     </div>
                                 </div>
@@ -99,14 +99,7 @@
                                         <span class="subhead ">About this listing</span>
                                         <p>
                                             <!-- description -->
-                                            lohrem is the dummy text used in the web devlopment.
-                                            lohrem is the dummy text used in the web devlopment.
-                                            lohrem is the dummy text used in the web devlopment.
-                                            lohrem is the dummy text used in the web devlopment.
-                                            lohrem is the dummy text used in the web devlopment.
-                                            lohrem is the dummy text used in the web devlopment.
-                                            lohrem is the dummy text used in the web devlopment.
-                                            lohrem is the dummy text used in the web devlopment.
+                                            {{ room.desc }}
                                         </p>
                                     </div>
                                 </div>
@@ -159,23 +152,26 @@
                                         <div class="row"></div>
                                         <div class="row">
                                             <div class="one wide column"></div>
-                                            <div class="fifteen wide column">
+                                            <div class="fifteen wide column" id="reviewCollection">
                                                 <!-- review adding section -->
                                                     <div class="ui segment" id="reviewform">
                                                             <div class="ui grid addreview">
+                                                                
                                                                 <div class="row">
                                                                     <div class="sixteen wide column">
                                                                             <div class="ui form">
-                                                                                <div class="field">
+                                                                                {% csrf_token %}
+                                                                                <div class="required field">
                                                                                     <label>Rating</label>
-                                                                                    <div class="ui star rating" data-rating="0"></div>
+                                                                                    <div class="ui star rating" id="rvRating" data-rating="0"></div>
                                                                                 </div>
-                                                                                <div class="field">
+                                                                                <div class="required field">
                                                                                     <label>Text</label>
-                                                                                    <textarea></textarea>
+                                                                                    <textarea id="reviewText" required ></textarea>
+                                                                                    <input type="hidden" id="room_id" value="{{ room.room_id }}"/>
                                                                                 </div>
                                                                                 <div class="field">
-                                                                                    <button class="ui button">finish</button>
+                                                                                    <button class="ui button" id="reviewfinish">finish</button>
                                                                                 </div>
                                                                             </div>
                                                                     </div>
@@ -190,10 +186,10 @@
                                                     <div class="ui grid reviews">
                                                         <div class="row">
                                                             <div class="sixteen wide column reviewheader">         
-                                                                    <img class="ui avatar image" src="{% static 'images/profile.jpg' %}" style="width:50px;height:50px;">
+                                                                    <img class="ui avatar image" src="/media/{{ review.Person.image}}" style="width:50px;height:50px;">
                                                                     <div class="ui grid">
                                                                         <!-- reviewed person's name -->
-                                                                        <div class="row"><span class="reviewperson">{{ review.user.first_name}} {{ review.user.last_name }}</span></div>
+                                                                        <div class="row"><span class="reviewperson">{{ review.Person.first_name}} {{ review.Person.last_name }}</span></div>
                                                                         <div class="row">
                                                                             <div class="ui star rating" data-rating="{{ review.rating }}"></div>
                                                                             <!-- review date -->
@@ -218,43 +214,6 @@
                                                 </div>
                                                 {% endfor %}
                                                 <!-- review ends-->
-                                                <!--review starts -->
-                                                <div class="ui segment">
-                                                    <div class="ui grid reviews">
-                                                        <div class="row">
-                                                            <div class="sixteen wide column reviewheader">  
-                                                                    <!-- profile pic of reviewed person -->       
-                                                                    <img class="ui avatar image" src="{% static 'images/profile.jpg' %}" style="width:50px;height:50px;">
-                                                                    <div class="ui grid">
-                                                                        <!-- reviewed person's name -->
-                                                                        <div class="row"><span class="reviewperson">Charlie puth</span></div>
-                                                                        <div class="row">
-                                                                            <div class="ui star rating" data-rating="3"></div>
-                                                                            <!-- review date -->
-                                                                            <span class="reviewdate">4/3/17</span>
-                                                                        </div>
-
-                                                                    </div>
-                                                            </div>
-                                                            
-                                                        </div>
-                                                        <div class="ui divider"></div>
-                                                        <div class="row">
-                                                            <div class="sixteen wide column">
-                                                                <!-- review description -->
-                                                                <p>
-                                                                    text used in the web devlopment.
-                                                                    lohrem is the dummy text used in the web devlopment.
-                                                                    lohrem is the dummy text used in the web devlopment.
-                                                                </p>
-                                                            </div>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div> 
-                                                <!-- review ends-->
-                                               
-                                               
                                             </div>
                                         </div>
                                     </div>  
@@ -273,15 +232,15 @@
                                     <div class="ui grid host">
                                         <div class="row">
                                             <div class="fourteen wide column">
-                                                <span class="subhead">Hosted by {{ room.user }}</span>
+                                                <span class="subhead">Hosted by {{ host.first_name }} {{ host.last_name }}</span>
                                             </div>
                                             <div class="two wide column">
-                                                    <img class="ui tiny avatar image" src="{% static 'images/profile.jpg' %}">
+                                                    <img class="ui tiny avatar image" src="/media/{{ host.image}}">
                                             </div>
                                         </div>
                                         <div class="row layer">
                                             <div class="sixteen wide column">
-                                                <span >Ernakulam,kerala,india</span>
+                                                <span >{{room.city|title}},{{ room.state|lower }},india</span>
                                             </div>
                                             
                                         </div>
@@ -316,7 +275,11 @@
                                         <div class="row">
                                             <div class="column pricehead">
                                           <!-- room type -->      
-                                                <span>PRIVATE ROOM</span>
+                                                <span>{{room.type}} {% if room.type == "ENTIRE" %}
+                                                                                                         HOME
+                                                                                                    {% else %}
+                                                                                                         ROOM
+                                                                                                    {% endif%} </span>
                                             </div>
                                         </div>
                                         
@@ -396,116 +359,22 @@
             <div class="ui four column grid portfolio">
                 <div class="row">
                         <!-- image starts -->
+                        {% for aPhoto in photos %}
                         <div class="column view-tenth">
-                            <img src="/media/mountains.jpg"/>
+                            <img src="/media/{{aPhoto.photo}}"/>
                             <div class="overlay">
                                 <div class="ovlycontent">
                                     <span class="expand">
-                                        <a href="/media/mountains.jpg" data-lightbox="portfolio">
+                                        <a href="/media/{{aPhoto.photo}}" data-lightbox="portfolio">
                                             <i class=" large zoom icon"></i>
                                         </a>
                                     </span>
                                 </div>
                             </div>
                         </div>
+                        {% endfor %}
                         <!--image ends -->
-                        <!-- image starts -->
-                        <div class="column view-tenth">
-                            <img src="/media/adStayways.jpg"/>
-                            <div class="overlay">
-                                <div class="ovlycontent">
-                                    <span class="expand">
-                                        <a href="/media/adStayways.jpg" data-lightbox="portfolio">
-                                            <i class=" large zoom icon"></i>
-                                        </a>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--image ends -->
-                        <!-- image starts -->
-                        <div class="column view-tenth">
-                            <img src="/media/room.jpg"/>
-                            <div class="overlay">
-                                <div class="ovlycontent">
-                                    <span class="expand">
-                                        <a href="/media/room.jpg" data-lightbox="portfolio">
-                                            <i class=" large zoom icon"></i>
-                                        </a>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--image ends -->
-                        <!-- image starts -->
-                        <div class="column view-tenth">
-                            <img src="/media/mountains.jpg"/>
-                            <div class="overlay">
-                                <div class="ovlycontent">
-                                    <span class="expand">
-                                        <a href="/media/mountains.jpg" data-lightbox="portfolio">
-                                            <i class=" large zoom icon"></i>
-                                        </a>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--image ends -->
-                        <!-- image starts -->
-                        <div class="column view-tenth">
-                            <img src="/media/adStayways.jpg"/>
-                            <div class="overlay">
-                                <div class="ovlycontent">
-                                    <span class="expand">
-                                        <a href="/media/adStayways.jpg" data-lightbox="portfolio">
-                                            <i class=" large zoom icon"></i>
-                                        </a>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--image ends -->
-                        <!-- image starts -->
-                        <div class="column view-tenth">
-                            <img src="/media/room.jpg"/>
-                            <div class="overlay">
-                                <div class="ovlycontent">
-                                    <span class="expand">
-                                        <a href="/media/room.jpg" data-lightbox="portfolio">
-                                            <i class=" large zoom icon"></i>
-                                        </a>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--image ends -->
-                        <!-- image starts -->
-                        <div class="column view-tenth">
-                            <img src="/media/mountains.jpg"/>
-                            <div class="overlay">
-                                <div class="ovlycontent">
-                                    <span class="expand">
-                                        <a href="/media/mountains.jpg" data-lightbox="portfolio">
-                                            <i class=" large zoom icon"></i>
-                                        </a>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--image ends -->
-                        <!-- image starts -->
-                        <div class="column view-tenth">
-                            <img src="/media/room.jpg"/>
-                            <div class="overlay">
-                                <div class="ovlycontent">
-                                    <span class="expand">
-                                        <a href="/media/room.jpg" data-lightbox="portfolio">
-                                            <i class=" large zoom icon"></i>
-                                        </a>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                       
                         <!--image ends -->
                         
                 </div>

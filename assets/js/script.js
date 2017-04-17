@@ -72,10 +72,21 @@ $("#reviewformview").click(function(){
 });
 
 
-	
+	//room form view
+$("#hostRoomViewer").click(function(){
+    $("#roomHostForm").show();
+});
 
+//tooltips
 
-
-
-
+$('#hostRoomUpload').qtip({ // Grab some elements to apply the tooltip to
+    content: {
+        text: 'you can select multiple files on here'
+    },
+    position: {
+        my: 'top left',  // Position my top left...
+        at: 'bottom right', // at the bottom right of...
+        target: $('#hostRoomUpload') // my target
+    }
+})
 

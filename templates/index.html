@@ -25,19 +25,22 @@
         <div class="sixteen wide column masthead">
             <div id="particles-js"></div>
             <div class="layer">
-                <div class="ui grid container ">
-                    <div class="four wide column ">
-                        <div class="logo"><img src="{% static 'images/logo.png' %}" alt="Stayways" height="40px"></div>
-                    </div>
-                    <div class="twelve wide column nav">
-                         {% if user.is_authenticated %}
-                             <div class="nav-buttons"><a href="/logout/"><button  class="ui inverted button">Log Out</button></a></div>
-
-                         {% else %}
-                        <div class="nav-buttons"><button id="sign" class=" ui  green button ">Sign Up</button></div>
-                        <div class="nav-buttons"><button id="log" class="ui inverted button">Log In</button></div>
-                        <div class="nav-buttons"><button class="ui inverted basic button">Host accommodation</button></div>
-                        {% endif %}
+                <div class="ui grid ">
+                    <div class="row indexNavRow">
+                        <div class="four wide column ">
+                            <div class="logo"><img src="{% static 'images/logo.png' %}" alt="Stayways" height="40px"></div>
+                        </div>
+                        <div class="twelve wide column nav">
+                            {% if user.is_authenticated %}
+                                <div class="onlineAvathar"><img class="ui avatar image" src="/media/{{onlineUser.image}} "></div>
+                                <div class="nav-buttons item"><a href="/logout/"><button  class="ui inverted button">Log Out</button></a></div>
+                                <div class="nav-buttons"><a href="/dashboard/" class="ui inverted basic button">Dashboard</a></div>
+                            {% else %}
+                                <div class="nav-buttons item"><button id="sign" class=" ui  green button ">Sign Up</button></div>
+                                <div class="nav-buttons"><button id="log" class="ui inverted button">Log In</button></div>
+                                <div class="nav-buttons"><button class="ui inverted basic button">Host accommodation</button></div>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
                 <div class="textarea">

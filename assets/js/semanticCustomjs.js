@@ -47,6 +47,8 @@ $(document).ready(function(){
     bottomOffset : 100,
     pushing: true
   });
-
+  
+  $('.ui.dropdown').dropdown();
+ $('.ui.checkbox').checkbox();
 
 });

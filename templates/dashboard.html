@@ -2,36 +2,97 @@
 
 {% block content %}
 
-
+ <div class="ui grid">
     <div class="row"></div>
     <div class="row">
-        <div class="two wide column"></div>
-        <div class="four wide column">
+        
+        <div class="four wide column"></div>
+        <div class="six wide column">
     <!-- add room -->
-                   
-                    <form class="ui form" action="/addroom/" method="post" enctype="multipart/form-data">
+           <div id="roomHostForm">
+                  <h3> Host Room</h3>
+                    <form class="ui form"  action="/addroom/" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
+                    <div class="required field">
+                        <label>Title</label>
+                            <input type="text" name="title" />
+                    </div>
+                    <div class="required field">
+                        <label>About this room</label>
+                         <textarea name="desc" required ></textarea>
+                    </div>
                      <div class="required field">
+                         <label>Room Type</label>
                                 <select class="ui search dropdown" name="type">
-                                    <option value="">Room type</option>
+                                    <option value="">SELECT ROOM TYPE</option>
                                     <option value="Private">Private</option>
                                     <option value="Shared">Shared</option>
                                     <option value="Hostel">Hostel</option>
                                     <option value="EntireHome">Entire Home</option>
                                 </select>
-                            </div>
+                    </div>
                     
-                    <div class="required field">
-                            <div class="required field">
-                                <label>City</label>
-                                <input type="text" required name="city" placeholder="ernakulam">
+                    <div class="two fields">
+                        <div class="field">
+                            <div class="ui checkbox">
+                                <label>Wireless Internet</label>
+                                <input type="checkbox" name="wifi">
                             </div>
-                            <div class="required field">
-                                <label>State</label>
-                                <input type="text" required name="state" placeholder="kerala">
+                        </div>
+                        <div class="field">
+                            <div class="ui checkbox">
+                                <label>Furnitured</label>
+                                <input type="checkbox" name="furnitured">
                             </div>
+                        </div>
+                    </div>
+                    <div class="two fields">
+                        <div class="field">
+                            <div class="ui checkbox">
+                                <label>Kitchen</label>
+                                <input type="checkbox" name="kitchen">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui checkbox">
+                                <label>Pets Allowed</label>
+                                <input type="checkbox" name="petsallowed">
+                            </div>
+                        </div>
                     </div>
                     <div class="field">
+                            <div class="ui checkbox">
+                                <label>Air-Conditioned</label>
+                                <input type="checkbox" name="ac">
+                            </div>
+                    </div>
+                    <div class="three fields">
+                        <div class="required field">
+                            <label>No.of Bedroom</label>
+                                <input type="text" name="bedroom" placeholder="no of  bedroom" />
+                        </div>
+                        <div class="required field">
+                            <label>No.of Beds</label>
+                                <input type="text" name="bed" placeholder="no of beds" />
+                        </div>
+                        <div class="required field">
+                            <label>No.of Guests</label>
+                                <input type="text" name="guest" placeholder="no of guests" />
+                        </div>
+                    </div>
+                    <div class="required field">
+                    <label>State</label>
+                        <select class="ui search dropdown" name="state" id="listBox" onchange='selct_district(this.value)'>
+                            <option value="">SELECT STATE</option>
+                        </select>
+                    </div>
+                    <div class="required field">
+                        <label>City</label>
+                        <select class="ui search dropdown" id='secondlist' required  name="city">
+                            <option value="">SELECT CITY</option>
+                        </select>
+                    </div>
+                    <div class="two fields">
                                 <div class="field">
                                     <div class="required field">
                                             <label>Zipcode</label>
@@ -39,44 +100,41 @@
                                         </div>
                                 </div>
                                 <div class="required field">
-                                        <div class="ui right labeled input">
-                                        <div class="ui label">$</div>
-                                        <input type="text" required name="price" placeholder="Amount">
+                                        <label>service charge</label>
+                                        <div class="ui right labeled input">  
+                                        <div class="ui label">₹</div>
+                                        <input type="text" required name="service" placeholder="Amount">
                                         <div class="ui basic label">.00</div>
                                         </div>
                                 </div>
                     </div>
-                    <div class="field">
-                                    <div class="required field">
-                                            <label>Photo</label>
-                                            <input type="file" required name="upload" placeholder="album.jpg">
-                                        </div>
-                                </div>
-
-                    <button class="ui button" type="submit">Submit</button>
-                    </form>
-
-
-
-            <form class="ui form" action="/addreview/" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-
-
                     <div class="required field">
+                        <label>Price</label>
+                        <div class="ui right labeled input">  
+                            <div class="ui label">₹</div>
+                            <input type="text" required name="price" placeholder="Amount">
+                            <div class="ui basic label">.00</div>
+                        </div>
+                     </div>
+                    <div class="fields">
                             <div class="required field">
-                                <label>Rating</label>
-                                <input type="text" required name="rating" placeholder="3">
-                            </div>
-                            <div class="required field">
-                                <label>Review</label>
-                                <input type="text" required name="review" placeholder="Add something">
+                                    <label>Photos</label>
+                                    <input type="file" required name="uploads" id="hostRoomUpload"  multiple />
                             </div>
                     </div>
-
-                    <button class="ui button" type="submit">Submit</button>
+                    <div class="field">                            
+                                    <button class="ui button" style="float:right" type="submit">Submit</button>
+                    </div>
+                    
                     </form>
+
+             </div>
     <!-- add room form -->
     </div>
+    <div class="four wide column"></div>
+    <div class="one wide column">
+         <button class="ui button" id="hostRoomViewer">Host Room</button>
     </div>
- 
+    </div>
+ </div>
 {% endblock content %}

@@ -1,0 +1,29 @@
+<div class="ui segment">
+    <div class="ui grid reviews">
+        <div class="row">
+            <div class="sixteen wide column reviewheader">         
+                <img class="ui avatar image" src="/media/{{ review.Person.image}}" style="width:50px;height:50px;">
+                <div class="ui grid">
+                <!-- reviewed person's name -->
+                    <div class="row">
+                        <span class="reviewperson">{{ review.Person.first_name}} {{ review.Person.last_name }}</span>
+                    </div>
+                    <div class="row">
+                        <div class="ui star rating" data-rating="{{review.rating}}"></div>
+                <!-- review date -->
+                        <span class="reviewdate">{{ review.date }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="row">
+            <div class="sixteen wide column">
+            <!-- review description -->
+                <p>
+                    {{ review.review }}
+                </p>
+             </div>                                                
+        </div>
+    </div>
+</div>

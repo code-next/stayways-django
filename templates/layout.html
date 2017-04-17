@@ -8,6 +8,7 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/lightbox.css' %}" rel="stylesheet">
+    <link href="{% static 'css/jquery.qtip.min.css' %}" rel="stylesheet">
     
     <title>{% block title %}{% endblock %}</title>
     
@@ -26,16 +27,20 @@
                 </div>
             </div>   
         </div>
-        </div>
+    </div>
     {% block content %}
     {% endblock %}
     
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/semantic.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
     <script src="{% static 'js/semanticCustomjs.js' %}"></script>
     <script src="{% static 'js/wow.min.js' %}"></script>
     <script src="{% static 'js/smoothscroll.js' %}"></script>
     <script src="{% static 'js/lightbox.min.js' %}"></script>
+    <script src="{% static 'js/state.js' %}"></script> 
+    <script src="{% static 'js/jquery.qtip.min.js' %}"></script> 
+    <script src="{% static 'js/ajax.js' %}"></script> 
     <script src="{% static 'js/script.js' %}"></script>
     
     {% block javascript %}

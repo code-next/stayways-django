@@ -105,21 +105,32 @@
                                          <div id="wrapper">
                                              <div id="columns">
                                                         <!-- card starts -->
-                                                 {% for room in rooms %}
-                                                     <a href="/room/{{ room.room_id }}/">
+                                                 {% for value in roomObj %}
+                                                     <a href="/room/{{ value.room.room_id }}/">
                                                     <div class="roomcard">
-                                                        <img src="/media/{{room.photo}}"/>
+                                                        <img src="/media/{{value.photo.photo}}"/>
                                                         <div class="ui grid">
                                                                     <div class="row marginRow">
                                                                         <div class="left aligned sixteen wide column">
-                                                                            <span class="roomType">{{ room.type|title }}</span>
-                                                                            <span class="roomPrice">₹ {{ room.price }}</span>
+                                                                            <span class="roomType">{{ value.room.type|title }} 
+                                                                                                    {% if value.room.type == "ENTIRE" %}
+                                                                                                         Home
+                                                                                                    {% else %}
+                                                                                                         Room
+                                                                                                    {% endif%} 
+                                                                            </span>
+                                                                            <span class="roomPrice">₹ {{ value.room.price }}</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row marginSecRow bedrow">
                                                                         <div class="left aligned column">
-                                                                            <span class="roomBeds">2 beds</span>
-                                                                            <span class="roomBeds locality">{{ room.state|title }},{{ room.city|title }}</span>
+                                                                            <span class="roomBeds">{% if value.room.no_beds == 1 %}
+                                                                                                        {{ value.room.no_beds }} bed
+                                                                                                    {% else %}
+                                                                                                        {{ value.room.no_beds }} beds
+                                                                                                    {% endif%} 
+                                                                            </span>
+                                                                            <span class="roomBeds locality">{{ value.room.city|title }},{{ value.room.state|lower }}</span>
                                                                         </div>
                                                                     </div>
                                                         </div>
@@ -128,7 +139,7 @@
                                                             <div class="row marginSecRow">
                                                                     <div class="left aligned column">
                                                                         <p>
-                                                                            <span>fully furnished 3 bedroom flat.lohrem is the dummy text used in web development</span>
+                                                                            <span>{{ value.room.title }}</span>
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -137,16 +148,17 @@
                                                         <div class="ui grid">
                                                             <div class="row marginSecRow">
                                                                 <div class="left aligned column">
-                                                                    <div class="ui star rating" data-rating="3" role="radiogroup">
+                                                                    <div class="ui star rating" data-rating="{{ value.room.avgrating }}" role="radiogroup">
                                                                                 
                                                                     </div>
-                                                                    <span class="review">2 reviews</span>
+                                                                    <span class="review">{{ value.rcount }} reviews</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                      </a>
-                                                    {% endfor %}
+                                                    
+                                                {% endfor %}
                                                     <!-- card ends -->
                                                
 

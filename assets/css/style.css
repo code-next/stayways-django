@@ -41,8 +41,25 @@
 }
 
 .logo {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-left: 140px;
     float: left;
+}
+.onlineAvathar{
+    margin-right: 50px;
+    float: right;
+}
+.onlineAvathar img{
+    height:50px !important;
+    width:50px !important;
+    margin-top: -8px;
+}
+.indexNavRow{
+    padding-top:40px !important;
+}
+.nav-buttons.item{
+    margin-right: 80px !important;
+    margin-top:10px !important;
 }
 
 .heading {
@@ -763,4 +780,12 @@ p {
 .ovlycontent .icon{
     margin-left:7px;
     margin-top:-2px;
+}
+
+/*dashboard styles*/
+
+#roomHostForm{
+    display: none;
+   -webkit-transition: all 2s ease-in-out;
+  transition: all 2s ease-in-out;
 }
