@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 import json
 import math
 
-
+# index page
 def index(request):
     if request.method =="GET":
         if request.user.is_authenticated():
@@ -16,6 +16,7 @@ def index(request):
         else:
             return render(request, "index.html")
 
+# user registration
 def signup(request):
     if request.method =="POST":
         username = request.POST['username']
@@ -29,12 +30,12 @@ def signup(request):
 
         if user is not None:
             login(request, user)
-            # Redirect to a success page.
             person=Person.objects.get(user=regUser)
             return render(request,'index.html',{'onlineUser' : person})
         else:
             return HttpResponse("something wend wrong")
 
+# user login
 def signin(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -42,14 +43,13 @@ def signin(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            # Redirect to a success page.
             person=Person.objects.get(user=user)
             return render(request,'index.html',{'onlineUser' : person})
 
         else:
             return HttpResponse("something wend wrong")
 
-
+# review adding
 def AddReview(request):
     if request.method == "POST":
         rating = request.POST['rating']
@@ -72,7 +72,7 @@ def AddReview(request):
         room.save()
         return render(request,'ajax_review.html',{'review' : rev})
 
-
+# viewing room list
 def roomlistview(request):
     if request.method == "POST":
         place  = request.POST['place']
@@ -93,6 +93,7 @@ def roomlistview(request):
         return render(request,'roomlistview.html',{'roomObj' : roomObj, 'city': place,'rooms':rooms})
     return redirect('/')
 
+# room adding
 @login_required
 def AddRoom(request):
     if request.method =="POST":
@@ -106,7 +107,7 @@ def AddRoom(request):
         furnitured =False if 'furnitured' not in request.POST else True
         kitchen = False if 'kitchen' not in request.POST else True
         petsallowed = False if 'petsallowed' not in request.POST else True
-        ac = False if 'ac' not in request.POST else False
+        ac = False if 'ac' not in request.POST else True
         bedroom = request.POST['bedroom'].strip()
         bed = request.POST['bed'].strip()
         guest = request.POST['guest'].strip()
@@ -118,7 +119,8 @@ def AddRoom(request):
         city = city.upper()
         state = state.upper()
         type = type.upper()
-        
+        price = int(service)+int(price)
+
         room = Room.objects.create(
             user=user,
             title=title,
@@ -144,12 +146,105 @@ def AddRoom(request):
             Portfolio.objects.create(user=user,photo=file,room=room)
         return redirect("/dashboard/")
 
+#room filtering
+def ajax_roomfilter(request):
+    if request.method =="POST":
+        place  = request.POST['roomlistCity']
+        li=[]
+        if 'roomlistPrivate' in request.POST:
+            li.append('PRIVATE')
+        if 'roomlistShared' in request.POST:
+            li.append('SHARED')
+        if 'roomlistEntire' in request.POST:
+            li.append('ENTIRE')
+        if 'roomlistHostel' in request.POST:
+            li.append('HOSTEL')
+        if not li:
+            li = ['PRIVATE','SHARED','ENTIRE','HOSTEL']    
+        wifi = False if 'roomlistWifi' not in request.POST else True
+        furnitured =False if 'roomlistFurnitured' not in request.POST else True
+        kitchen = False if 'roomlistKitchen' not in request.POST else True
+        petsallowed = False if 'roomlistPets' not in request.POST else True
+        ac = False if 'roomlistAc' not in request.POST else True
+        if wifi == False and furnitured == False and kitchen == False and petsallowed == False and ac == False:
+            rooms = Room.objects.filter(city = place)
+            itemlist=[room for room in rooms if room.type in li]
+           
+        else:
+            rooms = Room.objects.filter(city = place)
+            roomlist=[room for room in rooms if room.type in li]
+            if wifi == True and furnitured == True and kitchen == True and petsallowed ==True and ac == True:
+                itemlist=[aRoom for aRoom in roomlist if aRoom.wifi == True and aRoom.furnitured == True and aRoom.kitchen == True and aRoom.pets == True and aRoom.ac == True ]  
+            elif wifi == True and furnitured == False and kitchen == False and petsallowed ==False and ac == False :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.wifi == True]
+            elif wifi == True and furnitured == True and kitchen == False and petsallowed ==False and ac == False :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.wifi == True and aRoom.furnitured == True ]
+            elif wifi == True and furnitured == True and kitchen == True and petsallowed ==False and ac == False :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.wifi == True and aRoom.furnitured == True and aRoom.kitchen == True ]
+            elif wifi == True and furnitured == True and kitchen == True and petsallowed == True and ac == False :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.wifi == True and aRoom.furnitured == True and aRoom.kitchen == True and aRoom.pets == True]
+            elif wifi == True and furnitured == True and kitchen == False and petsallowed == True and ac == False :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.wifi == True  and aRoom.pets == True and aRoom.furnitured == True]
+            elif wifi == True and furnitured == False and kitchen == True and petsallowed == True and ac == True :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.wifi == True and aRoom.kitchen == True and aRoom.pets == True and aRoom.ac == True]
+            elif wifi == True and furnitured == False and kitchen == False and petsallowed == True and ac == True :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.wifi == True and aRoom.petsallowed == True and aRoom.ac == True]
+            elif wifi == True and furnitured == False and kitchen == False and petsallowed == False and ac == True :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.wifi == True and aRoom.ac == True]
 
+            elif wifi == False and furnitured == True and kitchen == False and petsallowed == False and ac == False :    
+                itemlist=[aRoom for aRoom in roomlist if aRoom.furnitured == True]
+            elif wifi == False and furnitured == True and kitchen == True and petsallowed == False and ac == False :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.furnitured == True and aRoom.kitchen == True]
+            elif wifi == False and furnitured == True and kitchen == True and petsallowed == True and ac == False :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.furnitured == True and aRoom.kitchen == True and aRoom.pets ==True]
+            elif wifi == False and furnitured == True and kitchen == True and petsallowed == True and ac == True :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.furnitured == True and aRoom.kitchen == True and aRoom.pets ==True and aRoom.ac == True]
+            elif wifi == False and furnitured == True and kitchen == False and petsallowed == True and ac == True :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.furnitured == True and aRoom.petsallowed == True and aRoom.ac == True]
+            elif wifi == False and furnitured == True and kitchen == False and petsallowed == False and ac == True :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.furnitured == True and aRoom.ac == True]
+            elif wifi == False and furnitured == True and kitchen == False and petsallowed == True and ac == False :  
+                itemlist=[aRoom for aRoom in roomlist if aRoom.furnitured == True and aRoom.petsallowed == True]
+
+            elif wifi == False and furnitured == False and kitchen == True and petsallowed == False and ac == False :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.kitchen == True]
+            elif wifi == False and furnitured == False and kitchen == True and petsallowed == True and ac == False :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.kitchen == True and aRoom.pets == True]
+            elif wifi == False and furnitured == False and kitchen == True and petsallowed == True and ac == True :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.kitchen == True and aRoom.pets == True and aRoom.ac == True]
+            elif wifi == False and furnitured == False and kitchen == True and petsallowed == False and ac == True :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.kitchen == True and aRoom.ac == True]
+
+            elif wifi == False and furnitured == False and kitchen == False and petsallowed == True and ac == False :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.pets == True]
+            elif wifi == False and furnitured == False and kitchen == False and petsallowed == True and ac == True :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.pets == True and aRoom.ac == True]
+
+            elif wifi == False and furnitured == False and kitchen == False and petsallowed == False and ac == True :
+                itemlist=[aRoom for aRoom in roomlist if aRoom.ac == True]
+
+                
+
+        roomObj=[]
+        for item in itemlist:
+            tTemp={}
+            reviews=Review.objects.filter(room=item.room_id)
+            photo = Portfolio.objects.filter(room=item.room_id)[0]
+            rcount = reviews.count()
+            tTemp['room']=item
+            tTemp['rcount']=rcount
+            tTemp['photo']=photo
+            roomObj.append(tTemp)
+        return render(request,'ajax_roomfilter.html',{'roomObj' : roomObj})
+
+# dashboard
 @login_required
 def dashboard(request):
     if request.method == "GET":
         return render(request,"dashboard.html")
         
+# room detail view
 def room_detail(request,rid):
     room = Room.objects.get(room_id=rid)
     reviews = Review.objects.filter(room=rid)
@@ -164,11 +259,13 @@ def room_detail(request,rid):
         'photos':photos
     })
 
+#user logout
 @login_required
 def logout_view(request):
     logout(request)
     return redirect('/')
 
+# autocomplete search
 def ajax_getCity(request):
     if request.is_ajax():
         search_text = request.GET.get('term', '')

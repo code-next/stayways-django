@@ -10,7 +10,7 @@
               {% else %}
               ROOMS
             {% endif %}</div>
-            <div class="subtitleROOM"> loherm / sfsdfds / sdfdfs / loherm</div>
+            <div class="subtitleROOM"> loherm / isdummy / textfor / webdevlopment</div>
         </div>
         <div class="one wide column"></div>
     </div>
@@ -23,32 +23,35 @@
                         <div class="row filters">
                             <div class="one wide column"></div>
                             <div class="three wide computer thirteen wide mobile three wide tablet three wide column">
+                                <form id="roomFilteringForm">
+                                    {% csrf_token %}
                                 <div class="filterhead">CATEGORY</div>
                                 <div class="itemCollection">
                                             <div class="item">
                                                 <div class="ui checkbox">
-                                                    <input type="checkbox">
+                                                    <input type="checkbox" class="filterCheck" id="roomlistPrivate">
                                                     <label>Private</label>
+                                                    <input type="hidden" id="roomlistCity" value="{{city}}"/>
                                                 </div>
                                                 <div class="grey">(237)</div>
                                             </div>
                                             <div class="item">
                                                 <div class="ui checkbox">
-                                                    <input type="checkbox" >
+                                                    <input type="checkbox" class="filterCheck" id="roomlistHostel">
                                                     <label>Hostel</label>
                                                 </div>
                                                 <div class="grey"> (50)</div>
                                             </div>
                                             <div class="item">
                                                 <div class="ui checkbox">
-                                                    <input type="checkbox" >
+                                                    <input type="checkbox" class="filterCheck" id="roomlistShared">
                                                     <label>Shared</label>
                                                 </div>
                                                 <div class="grey">(420)</div>
                                             </div>
                                             <div class="item">
                                                 <div class="ui checkbox">
-                                                    <input type="checkbox" >
+                                                    <input type="checkbox" class="filterCheck" id="roomlistEntire">
                                                     <label>Entire home</label>
                                                 </div>
                                                 <div class="grey">(100)</div>
@@ -59,39 +62,47 @@
                                 <div class="itemCollection">
                                             <div class="item">
                                                 <div class="ui toggle checkbox">
-                                                    <input type="checkbox">
+                                                    <input type="checkbox" class="filterCheck" id='roomlistAc'>
                                                     <label>A/c</label>
                                                 </div>
                                                 <div class="grey">(237)</div>
                                             </div>
                                             <div class="item">
                                                 <div class="ui toggle checkbox">
-                                                    <input type="checkbox">
+                                                    <input type="checkbox" class="filterCheck" id='roomlistWifi'>
                                                     <label>Wifi</label>
                                                 </div>
                                                 <div class="grey"> (50)</div>
                                             </div>
                                             <div class="item">
                                                 <div class="ui toggle checkbox">
-                                                    <input type="checkbox">
+                                                    <input type="checkbox" class="filterCheck" id="roomlistFurnitured">
                                                     <label>Furnitured</label>
                                                 </div>
                                                 <div class="grey">(420)</div>
                                             </div>
                                             <div class="item">
                                                 <div class="ui toggle checkbox">
-                                                    <input type="checkbox">
+                                                    <input type="checkbox" class="filterCheck" id="roomlistPets">
                                                     <label>Pets allowed</label>
+                                                </div>
+                                                <div class="grey">(100)</div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="ui toggle checkbox">
+                                                    <input type="checkbox" class="filterCheck" id="roomlistKitchen">
+                                                    <label>Kitchen</label>
                                                 </div>
                                                 <div class="grey">(100)</div>
                                             </div>
                                 </div>
                                 <div class="ui divider"></div>
-                                <div class="filterhead">PRICE RANGE</div>
+                                <!-- <div class="filterhead">PRICE RANGE</div> 
                                 <div class="itemCollection">
                                             
                                 </div>
-                                <div class="ui divider"></div>
+                                <div class="ui divider"></div> -->
+                            </form>
                             </div>
                             <div class="right aligned eleven wide computer fourteen wide mobile eleven wide tablet eleven wide column">
                                 <div>Sort: Popular| New | Rating: LowHigh | Price: LowHigh</div>
