@@ -251,7 +251,9 @@ def room_detail(request,rid):
     rcount = reviews.count()
     host   = Person.objects.get(user=room.user)
     photos = Portfolio.objects.filter(room=room.room_id)
+    monthlyCharge = room.price - room.service
     return render(request,'detail.html',{
+        'monthlyCharge':monthlyCharge,
         'host':host,
         'room' : room,
         'reviews' :reviews,
